@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="pending_bookingsPageDef"
+                Package="fleet.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="UnprocessedBookings1" RangeSize="25" DataControl="AppModuleFleetDataControl"
+              id="UnprocessedBookings1Iterator"/>
+    <searchRegion Binds="UnprocessedBookings1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="UnprocessedBookings1Query"/>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleFleetDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleFleetDataControl"/>
+    <tree IterBinding="UnprocessedBookings1Iterator" id="UnprocessedBookings1">
+      <nodeDefinition DefName="fleet.model.UnprocessedBookings" Name="UnprocessedBookings10">
+        <AttrNames>
+          <Item Value="BookingForUserId"/>
+          <Item Value="BookingTypeId"/>
+          <Item Value="BookingTime"/>
+          <Item Value="ExpectedTravelTime"/>
+          <Item Value="TripEndTime"/>
+          <Item Value="Destination"/>
+          <Item Value="ItemsTransportedId"/>
+          <Item Value="BookingStaffComments"/>
+          <Item Value="AllocatedDriverId"/>
+          <Item Value="AllocatedVehicleId"/>
+          <Item Value="ApprovingStaffComments"/>
+          <Item Value="BookingStatusId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

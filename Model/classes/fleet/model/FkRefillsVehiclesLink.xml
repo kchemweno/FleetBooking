@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FkRefillsVehiclesLink"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="fleet.model.FkRefillsVehiclesAssoc">
+  <ViewLinkDefEnd
+    Name="VehicleIdRefillsView"
+    Cardinality="1"
+    Source="true"
+    Owner="fleet.model.RefillsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+      <Attr Name="_finderName" Value="VehicleIdRefillsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fleet.model.RefillsView.Id"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="RefillsView"
+    Cardinality="-1"
+    Owner="fleet.model.RefillsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="RefillsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fleet.model.RefillsView.VehicleId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

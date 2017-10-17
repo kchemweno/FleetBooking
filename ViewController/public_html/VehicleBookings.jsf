@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Vehicle Bookings" id="d1" binding="#{backingBeanScope.backing_VehicleBookings.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_VehicleBookings.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_VehicleBookings.f1}">
+            <af:pageTemplate viewId="/main_template.jsf" id="pt1"
+                             binding="#{backingBeanScope.backing_VehicleBookings.pt1}">
+                <f:facet name="content">
+                    <af:calendar value="#{bindings.BookingsView1.calendarModel}" id="c1"
+                                 binding="#{backingBeanScope.backing_VehicleBookings.c1}">
+                        <f:facet name="create">
+                                           <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+                                                      binding="#{backingBeanScope.backing_bookings.p2}">
+                                                <af:panelWindow id="pw2"
+                                                                binding="#{backingBeanScope.backing_bookings.pw2}"
+                                                                title="New Booking">
+                                                    <af:panelFormLayout id="pfl1"
+                                                                        binding="#{backingBeanScope.backing_bookings.pfl1}"
+                                                                        inlineStyle="height:380px;">
+                                                        <af:selectOneChoice value="#{bindings.BookingForUserId.inputValue}"
+                                                                            label="Booking For"
+                                                                            required="#{bindings.BookingForUserId.hints.mandatory}"
+                                                                            shortDesc="#{bindings.BookingForUserId.hints.tooltip}"
+                                                                            id="soc1"
+                                                                            binding="#{backingBeanScope.backing_bookings.soc1}"
+                                                                            contentStyle="width:240px;">
+                                                            <f:selectItems value="#{bindings.BookingForUserId.items}"
+                                                                           id="si1"
+                                                                           binding="#{backingBeanScope.backing_bookings.si1}"/>
+                                                            <f:validator binding="#{bindings.BookingForUserId.validator}"/>
+                                                        </af:selectOneChoice>
+                                                        <af:spacer width="10" height="10" id="s3"
+                                                                   binding="#{backingBeanScope.backing_bookings.s3}"/>
+                                                        <af:selectOneChoice value="#{bindings.BookingTypeId.inputValue}"
+                                                                            label="Booking Type"
+                                                                            required="#{bindings.BookingTypeId.hints.mandatory}"
+                                                                            shortDesc="#{bindings.BookingTypeId.hints.tooltip}"
+                                                                            id="soc2"
+                                                                            binding="#{backingBeanScope.backing_bookings.soc2}"
+                                                                            contentStyle="width:240px;">
+                                                            <f:selectItems value="#{bindings.BookingTypeId.items}"
+                                                                           id="si2"
+                                                                           binding="#{backingBeanScope.backing_bookings.si2}"/>
+                                                            <f:validator binding="#{bindings.BookingTypeId.validator}"/>
+                                                        </af:selectOneChoice>
+                                                        <af:inputDate value="#{bindings.ExpectedTravelTime.inputValue}"
+                                                                      label="Travel Time"
+                                                                      required="#{bindings.ExpectedTravelTime.hints.mandatory}"
+                                                                      columns="#{bindings.ExpectedTravelTime.hints.displayWidth}"
+                                                                      shortDesc="#{bindings.ExpectedTravelTime.hints.tooltip}"
+                                                                      id="id5"
+                                                                      binding="#{backingBeanScope.backing_bookings.id5}"
+                                                                      contentStyle="width:240px;"
+                                                                      valueChangeListener="#{backingBeanScope.backing_bookings.travelTimeValueChangeListener}">
+                                                            <f:validator binding="#{bindings.ExpectedTravelTime.validator}"/>
+                                                            <af:convertDateTime pattern="yyyy-MM-dd HH:mm"/>
+                                                        </af:inputDate>
+                                                        <af:spacer width="10" height="10" id="s4"
+                                                                   binding="#{backingBeanScope.backing_bookings.s4}"/>
+                                                        <af:inputDate value="#{bindings.TripEndTime.inputValue}"
+                                                                      label="Trip End Time"
+                                                                      required="#{bindings.TripEndTime.hints.mandatory}"
+                                                                      columns="#{bindings.TripEndTime.hints.displayWidth}"
+                                                                      shortDesc="#{bindings.TripEndTime.hints.tooltip}"
+                                                                      id="id2"
+                                                                      binding="#{backingBeanScope.backing_bookings.id2}"
+                                                                      contentStyle="width:240px;"
+                                                                      valueChangeListener="#{backingBeanScope.backing_bookings.tripEndTimeValueChangeListener}">
+                                                            <f:validator binding="#{bindings.TripEndTime.validator}"/>
+                                                            <af:convertDateTime pattern="yyyy-MM-dd HH:mm"/>
+                                                        </af:inputDate>
+                                                        <af:inputText value="#{bindings.Destination.inputValue}"
+                                                                      label="#{bindings.Destination.hints.label}"
+                                                                      required="#{bindings.Destination.hints.mandatory}"
+                                                                      columns="#{bindings.Destination.hints.displayWidth}"
+                                                                      maximumLength="#{bindings.Destination.hints.precision}"
+                                                                      shortDesc="#{bindings.Destination.hints.tooltip}"
+                                                                      id="it1"
+                                                                      binding="#{backingBeanScope.backing_bookings.it1}"
+                                                                      contentStyle="width:240px;"
+                                                                      valueChangeListener="#{backingBeanScope.backing_bookings.destinationValueChangeListener}">
+                                                            <f:validator binding="#{bindings.Destination.validator}"/>
+                                                        </af:inputText>
+                                                        <af:spacer width="10" height="10" id="s7"
+                                                                   binding="#{backingBeanScope.backing_bookings.s7}"/>
+                                                        <af:selectOneChoice value="#{bindings.ItemsTransportedId.inputValue}"
+                                                                            label="Carrying"
+                                                                            required="#{bindings.ItemsTransportedId.hints.mandatory}"
+                                                                            shortDesc="#{bindings.ItemsTransportedId.hints.tooltip}"
+                                                                            id="soc3"
+                                                                            binding="#{backingBeanScope.backing_bookings.soc3}"
+                                                                            contentStyle="width:240px;">
+                                                            <f:selectItems value="#{bindings.ItemsTransportedId.items}"
+                                                                           id="si3"
+                                                                           binding="#{backingBeanScope.backing_bookings.si3}"/>
+                                                            <f:validator binding="#{bindings.ItemsTransportedId.validator}"/>
+                                                        </af:selectOneChoice>
+                                                        <af:inputText value="#{bindings.BookingStaffComments.inputValue}"
+                                                                      label="Comments"
+                                                                      required="#{bindings.BookingStaffComments.hints.mandatory}"
+                                                                      columns="#{bindings.BookingStaffComments.hints.displayWidth}"
+                                                                      maximumLength="#{bindings.BookingStaffComments.hints.precision}"
+                                                                      shortDesc="#{bindings.BookingStaffComments.hints.tooltip}"
+                                                                      id="it2"
+                                                                      binding="#{backingBeanScope.backing_bookings.it2}"
+                                                                      contentStyle="width:240px;" rows="3">
+                                                            <f:validator binding="#{bindings.BookingStaffComments.validator}"/>
+                                                        </af:inputText>
+                                                        <af:panelGridLayout id="pgl1"
+                                                                            binding="#{backingBeanScope.backing_bookings.pgl1}">
+                                                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                                                                        id="gr1"
+                                                                        binding="#{backingBeanScope.backing_bookings.gr1}">
+                                                                <af:gridCell marginStart="5px" width="100%"
+                                                                             marginEnd="5px" id="gc1"
+                                                                             binding="#{backingBeanScope.backing_bookings.gc1}"
+                                                                             halign="end" valign="middle">
+                                                                    <af:button text="O.K" id="b9"
+                                                                               binding="#{backingBeanScope.backing_bookings.b9}"
+                                                                               icon="#{resource['images:confirm_booking.png']}"
+                                                                               action="#{backingBeanScope.backing_bookings.insertNewBooking}"/>
+                                                                    <af:spacer width="10" height="10" id="s8"
+                                                                               binding="#{backingBeanScope.backing_bookings.s8}"/>
+                                                                    <af:spacer width="10" height="10" id="s2"
+                                                                               binding="#{backingBeanScope.backing_bookings.s2}"/>
+                                                                    <af:button text="Cancel" id="b8"
+                                                                               binding="#{backingBeanScope.backing_bookings.b8}"
+                                                                               icon="#{resource['images:cancel_small.png']}"
+                                                                               action="#{backingBeanScope.backing_bookings.closePopup}"/>
+                                                                </af:gridCell>
+                                                            </af:gridRow>
+                                                        </af:panelGridLayout>
+                                                    </af:panelFormLayout>
+                                                </af:panelWindow>
+                                            </af:popup> 
+
+                                        </f:facet>                        
+                        <f:facet name="activityHover"/>
+                    </af:calendar>
+                </f:facet>
+                <f:facet name="branding"/>
+                <f:facet name="navigation"/>
+                <f:attribute name="page_title" value="Vehicle Bookings"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_VehicleBookings-->
+</f:view>

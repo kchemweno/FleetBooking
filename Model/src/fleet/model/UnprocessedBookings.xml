@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UnprocessedBookings"
+  Version="12.2.1.12.24"
+  Extends="fleet.model.BookingsView"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  RowClass="fleet.model.UnprocessedBookingsRowImpl"
+  ComponentClass="fleet.model.UnprocessedBookingsImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="fleet.model.UnprocessedBookings_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="fleet.model.ModelBundle"/>
+  </ResourceBundle>
+  <DeclarativeWhereClause
+    Name="DeclarativeWhereClause">
+    <ViewCriteria
+      Name="UnprocessedBookingsWhereCriteria"
+      ViewObjectName="fleet.model.UnprocessedBookings"
+      Conjunction="AND"
+      Mode="3">
+      <ViewCriteriaRow
+        Name="UnprocessedBookingsWhereCriteria_row_0"
+        UpperColumns="1">
+        <ViewCriteriaItem
+          Name="BookingStatusId"
+          ViewAttribute="BookingStatusId"
+          Operator="="
+          Conjunction="AND"
+          Value="1"
+          Required="Required"/>
+      </ViewCriteriaRow>
+    </ViewCriteria>
+  </DeclarativeWhereClause>
+</ViewObject>

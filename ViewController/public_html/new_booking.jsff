@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelFormLayout id="pfl2">
+    <af:selectOneChoice value="#{bindings.BookingForUserId.inputValue}" label="Booking For"
+                        required="#{bindings.BookingForUserId.hints.mandatory}"
+                        shortDesc="#{bindings.BookingForUserId.hints.tooltip}" id="soc1" contentStyle="width:240px;">
+      <f:selectItems value="#{bindings.BookingForUserId.items}" id="si1"/>
+      <f:validator binding="#{bindings.BookingForUserId.validator}"/>
+    </af:selectOneChoice>
+    <af:spacer width="215" height="4" id="s2"/>
+    <af:selectOneChoice value="#{bindings.BookingTypeId.inputValue}" label="Booking Type"
+                        required="#{bindings.BookingTypeId.hints.mandatory}"
+                        shortDesc="#{bindings.BookingTypeId.hints.tooltip}" id="soc2" contentStyle="width:240px;">
+      <f:selectItems value="#{bindings.BookingTypeId.items}" id="si2"/>
+      <f:validator binding="#{bindings.BookingTypeId.validator}"/>
+    </af:selectOneChoice>
+    <af:spacer width="10" height="10" id="s3"/>
+    <af:inputDate value="#{bindings.ExpectedTravelTime.inputValue}" label="Departure Time"
+                  required="#{bindings.ExpectedTravelTime.hints.mandatory}"
+                  columns="#{bindings.ExpectedTravelTime.hints.displayWidth}"
+                  shortDesc="#{bindings.ExpectedTravelTime.hints.tooltip}" id="id1" contentStyle="width:240px;">
+      <f:validator binding="#{bindings.ExpectedTravelTime.validator}"/>
+      <af:convertDateTime pattern="yyyy-MM-dd HH:mm"/>
+    </af:inputDate>
+    <af:inputDate value="#{bindings.TripEndTime.inputValue}" label="Return Time"
+                  required="#{bindings.TripEndTime.hints.mandatory}"
+                  columns="#{bindings.TripEndTime.hints.displayWidth}" shortDesc="#{bindings.TripEndTime.hints.tooltip}"
+                  id="id2" contentStyle="width:240px;">
+      <f:validator binding="#{bindings.TripEndTime.validator}"/>
+       <af:convertDateTime pattern="yyyy-MM-dd HH:mm"/>
+    </af:inputDate>
+    <af:inputText value="#{bindings.Destination.inputValue}" label="#{bindings.Destination.hints.label}"
+                  required="#{bindings.Destination.hints.mandatory}"
+                  columns="#{bindings.Destination.hints.displayWidth}"
+                  maximumLength="#{bindings.Destination.hints.precision}"
+                  shortDesc="#{bindings.Destination.hints.tooltip}" id="it1" contentStyle="width:240px;">
+      <f:validator binding="#{bindings.Destination.validator}"/>
+    </af:inputText>
+    <af:spacer width="10" height="10" id="s4"/>
+    <af:selectOneChoice value="#{bindings.ItemsTransportedId.inputValue}" label="Carrying"
+                        required="#{bindings.ItemsTransportedId.hints.mandatory}"
+                        shortDesc="#{bindings.ItemsTransportedId.hints.tooltip}" id="soc3" contentStyle="width:240px;">
+      <f:selectItems value="#{bindings.ItemsTransportedId.items}" id="si3"/>
+      <f:validator binding="#{bindings.ItemsTransportedId.validator}"/>
+    </af:selectOneChoice>
+    <af:inputText value="#{bindings.BookingStaffComments.inputValue}" label="Comments"
+                  required="#{bindings.BookingStaffComments.hints.mandatory}"
+                  columns="#{bindings.BookingStaffComments.hints.displayWidth}"
+                  maximumLength="#{bindings.BookingStaffComments.hints.precision}"
+                  shortDesc="#{bindings.BookingStaffComments.hints.tooltip}" id="it2" contentStyle="width:240px;"
+                  rows="3">
+      <f:validator binding="#{bindings.BookingStaffComments.validator}"/>
+    </af:inputText>
+    <af:panelGridLayout id="pgl1">
+      <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+        <af:gridCell marginStart="5px" width="50%" id="gc2" halign="end">
+          <af:button text="O.K" disabled="false" id="b1"
+                     icon="#{resource['images:confirm_booking.png']}" action="insertNewBooking"/>
+          <af:spacer width="10" height="10" id="s1"/>
+          <af:button actionListener="#{bindings.Rollback.execute}" text="Cancel" disabled="false" immediate="true"
+                     id="b2" icon="#{resource['images:cancel_small.png']}" action="rollback">
+            <af:resetActionListener/>
+          </af:button>
+        </af:gridCell>
+      </af:gridRow>
+    </af:panelGridLayout>
+  </af:panelFormLayout>
+</ui:composition>

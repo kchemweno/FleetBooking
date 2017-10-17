@@ -1,0 +1,44 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sdoXML="commonj.sdo/xml" xmlns:sdoJava="commonj.sdo/java"
+     xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" targetNamespace="/fleet/model/common/"
+     xmlns="/fleet/model/common/" elementFormDefault="qualified" sdoJava:package="fleet.model.common">
+    <xsd:import schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+    <xsd:import schemaLocation="classpath:/xml/sdoXML.xsd" namespace="commonj.sdo/xml"/>
+    <xsd:import schemaLocation="classpath:/xml/sdoJava.xsd" namespace="commonj.sdo/java"/>
+    <xsd:complexType name="BookingsViewSDO">
+        <xsd:annotation>
+            <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+                <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+                    <attribute>Id</attribute>
+                    <attribute>IdString</attribute>
+                </key>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Id" type="xsd:int" minOccurs="0" sdoXML:dataType="sdoJava:IntObject"/>
+            <xsd:element name="UserId" type="xsd:int" minOccurs="0" sdoXML:dataType="sdoJava:IntObject"/>
+            <xsd:element name="BookingTypeId" type="xsd:int" minOccurs="0" sdoXML:dataType="sdoJava:IntObject"/>
+            <xsd:element name="BookingTime" type="ns0:dateTime-Timestamp" minOccurs="0"/>
+            <xsd:element name="ExpectedTravelTime" type="ns0:dateTime-Timestamp" minOccurs="0"/>
+            <xsd:element name="Destination" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="BookingForUserId" type="xsd:int" minOccurs="0" sdoXML:dataType="sdoJava:IntObject"/>
+            <xsd:element name="ItemsTransportedId" type="xsd:int" minOccurs="0" sdoXML:dataType="sdoJava:IntObject"/>
+            <xsd:element name="BookingStaffComments" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="BookingActionTime" type="ns0:dateTime-Timestamp" minOccurs="0" nillable="true"/>
+            <xsd:element name="ApprovingStaffComments" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="BookingStatusId" type="xsd:int" minOccurs="0" sdoXML:dataType="sdoJava:IntObject"/>
+            <xsd:element name="IsActive" type="xsd:int" minOccurs="0" sdoXML:dataType="sdoJava:IntObject"/>
+            <xsd:element name="TripEndTime" type="ns0:dateTime-Timestamp" minOccurs="0" nillable="true"/>
+            <xsd:element name="ProviderId" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="IdString" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Recurring" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="TimeType" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="AllDay" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Timezone" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="BookingsView" type="BookingsViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="BookingsView1" type="BookingsViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="BookingsView2" type="BookingsViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="BookingsView3" type="BookingsViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="bookingsViewSDO" type="BookingsViewSDO"/>
+</xsd:schema>

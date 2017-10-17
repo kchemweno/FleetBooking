@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RefillsView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="VehiclesView1"
+    ViewObjectName="fleet.model.VehiclesView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="DriversView1"
+    ViewObjectName="fleet.model.DriversView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_VehicleId"
+    ListVOName="VehiclesView1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="VehicleId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Registration"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DriverId"
+    ListVOName="DriversView1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DriverId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
+      <Item Value="OtherNames"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="Refills"
+    Entity="fleet.model.Refills"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Refills"
+    AliasName="id"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="VehicleId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="VehicleId"
+    EntityUsage="Refills"
+    AliasName="vehicle_id"
+    LOVName="LOV_VehicleId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DriverId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DriverId"
+    EntityUsage="Refills"
+    AliasName="driver_id"
+    LOVName="LOV_DriverId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DateTime"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DateTime"
+    EntityUsage="Refills"
+    AliasName="date_time"/>
+  <ViewAttribute
+    Name="Mileage"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Mileage"
+    EntityUsage="Refills"
+    AliasName="mileage"/>
+  <ViewAttribute
+    Name="Litres"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Litres"
+    EntityUsage="Refills"
+    AliasName="litres"/>
+  <ViewAttribute
+    Name="FuelPrice"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="FuelPrice"
+    EntityUsage="Refills"
+    AliasName="fuel_price"/>
+  <ViewAttribute
+    Name="IsActive"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IsActive"
+    EntityUsage="Refills"
+    AliasName="is_active"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="Refills"
+    AliasName="description"/>
+  <ViewLinkAccessor
+    Name="RefillsView"
+    ViewLink="fleet.model.FkRefillsVehiclesLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="BookingsView"
+    ViewLink="fleet.model.FkBookingsUsersAssoc4Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="BookingsView1"
+    ViewLink="fleet.model.FkBookingsTransportItemsAssoc4Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="BookingsView2"
+    ViewLink="fleet.model.FkBookingsBookingTypesAssoc4Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="BookingsView3"
+    ViewLink="fleet.model.FkBookingsBookingStatusAssoc4Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="TripsView"
+    ViewLink="fleet.model.FkTripsBookingsAssoc4Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="TripsView1"
+    ViewLink="fleet.model.FkTripsDriversAssoc4Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="TripsView2"
+    ViewLink="fleet.model.FkTripsVehiclesAssoc4Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="UsersView"
+    ViewLink="fleet.model.FkUsersRolesAssoc5Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="UsersView1"
+    ViewLink="fleet.model.FkUsersUnitsAssoc5Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

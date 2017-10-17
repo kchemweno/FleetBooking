@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+    <af:xmlContent>
+        <afc:component>
+            <afc:description>Main template for fleet system</afc:description>
+            <afc:display-name>main_template</afc:display-name>
+            <afc:facet>
+                <afc:description>Main content area. Top of page</afc:description>
+                <afc:facet-name>content</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:description>Branding area</afc:description>
+                <afc:facet-name>branding</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:description>Navigation area. Left of page</afc:description>
+                <afc:facet-name>navigation</afc:facet-name>
+            </afc:facet>
+            <afc:attribute>
+                <afc:attribute-name>
+                    page_title
+                </afc:attribute-name>
+                <afc:default-value>
+                    title
+                </afc:default-value>
+                <afc:required>
+                    true
+                </afc:required>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>
+                    page_logo
+                </afc:attribute-name>
+                <afc:default-value>
+    
+                </afc:default-value>
+                <afc:required>
+                    false
+                </afc:required>
+            </afc:attribute>            
+        </afc:component>
+    </af:xmlContent>
+    <af:panelSplitter orientation="horizontal" splitterPosition="176" id="pt_ps1">
+        <f:facet name="first">
+            <!-- Left -->
+            <af:panelAccordion discloseMany="false" id="pt_pa1" discloseNone="true">
+                <af:showDetailItem id="bookings" text="Bookings" icon="/images/bookings.jpg" disclosed="false"
+                                   inlineStyle="text-align:center;">
+                    <af:link text="Vehicle Bookings" id="pt_l1" icon="#{resource['images:cars.jpg']}"
+                             action="/bookings.jsf"/>
+                    <af:separator id="pt_s2"/>
+                    <af:link text="Process Bookings" id="pt_l11" action="/pending_bookings.jsf"
+                             icon="#{resource['images:process_bookings.png']}"/>
+                    <af:separator id="pt_s3"/>
+                    <af:link text="Vehicle Trips   " id="pt_l3" icon="#{resource['images:trips.png']}" action="/trips.jsf"/>
+                    <af:separator id="pt_s11"/>
+                </af:showDetailItem>
+                <af:showDetailItem id="dashboard" text="Dashboard" icon="#{resource['images:charts.jpg']}"
+                                   inlineStyle="text-align:center;" visible="false">
+                    <af:link text="Dashboard" id="pt_l9" icon="/images/charts.jpg"/>
+                    <af:separator id="pt_s9"/>
+                </af:showDetailItem>
+                <af:showDetailItem id="admin" text="Admin" icon="#{resource['images:admin.png']}"
+                                   inlineStyle="text-align:center;">
+                    <af:link text="Vehicles    " id="pt_l2" icon="#{resource['images:vehicles.jpg']}"
+                             action="/vehicles.jsf" partialTriggers="pt_gc1"/>
+                    <af:separator id="pt_s1"/>
+                    <af:link text="Refills" id="pt_l4" icon="#{resource['images:refuelling.jpg']}"
+                             action="/refills.jsf" partialTriggers="pt_gr1"/>
+                    <af:separator id="pt_s4"/>
+                    <af:link text="Drivers" id="pt_l5" icon="#{resource['images:drivers.png']}" action="/drivers.jsf"
+                             partialTriggers="pt_gr1" partialSubmit="false"/>
+                    <af:separator id="pt_s5"/>
+                    <af:link text="Units" id="pt_l6" icon="#{resource['images:units.jpg']}" action="/units.jsf"
+                             partialTriggers="pt_gr1"/>
+                    <af:separator id="pt_s7"/>
+                    <af:link text="Roles" id="pt_l7" icon="#{resource['images:roles.png']}" action="/roles.jsf"
+                             partialTriggers="pt_gr1"/>
+                    <af:separator id="pt_s8"/>
+                    <af:link text="Users" id="pt_l8" icon="#{resource['images:users.jpg']}" action="/users.jsf"
+                             partialTriggers="pt_gr1"/>
+                    <af:separator id="pt_s6"/>
+                </af:showDetailItem>
+            </af:panelAccordion>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelGridLayout id="pt_pgl1">
+                <af:gridRow height="67px" id="pt_gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc2">
+                        <!-- Partial Header -->
+                        <af:panelGridLayout id="pt_pgl2">
+                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="pt_gr3">
+                                <af:gridCell marginStart="5px" width="5%" id="pt_gc3">
+                                    <af:image id="pt_i1"
+                                              inlineStyle="height:51px; width:53px;"
+                                              source="#{resource['images:FAO-blue_logo-630x630.png']}"/>
+                                </af:gridCell>
+                                <af:gridCell marginStart="25px" width="10%" id="pt_gc6" valign="middle" halign="start"
+                                             inlineStyle="font-size:small;">
+                                    <af:outputText id="pt_ot2"
+                                                   inlineStyle="text-align:center; font-size:x-large; color:Navy;"
+                                                   value="Fleet Booking"/>
+                                </af:gridCell>
+                                <af:gridCell marginStart="5px" width="20%" id="pt_gc4" valign="bottom" halign="center">
+                                    <af:outputText id="pt_ot1"
+                                                   inlineStyle="font-size:medium; text-align:center;"
+                                                   value="#{attrs.page_title}"/>
+                                </af:gridCell>
+                                <af:gridCell marginStart="5px" width="30%" marginEnd="5px" id="pt_gc5" valign="middle">
+                                    <af:outputText value="Welcome;  #{securityContext.userName}" id="pt_ot3"
+                                                   inlineStyle="font-size:small; color:Navy;"/>
+                                    <af:spacer width="10" height="10" id="pt_s10"/>
+                                    <af:link text="#{securityContext.authenticated ? &quot;Log out &quot;  : &quot;Login&quot;}" id="pt_l10"
+                                             destination='#{securityContext.authenticated ? "/adfAuthentication?logout=true&amp;amp;end_url=/faces/bookings.jsf" :"/adfAuthentication?success_url=/faces/bookings.jsf"}'
+                                             inlineStyle="font-size:small; color:Navy;">
+                                        <af:spacer width="10" height="10" id="pt_s12"/>
+                                    </af:link>
+                                    <af:link text="Change Password" id="pt_l12"
+                                             icon="#{resource['images:change_password.png']}"
+                                             action="/change_password.jsf"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                        </af:panelGridLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="pt_gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc1">
+                        <!-- Content -->
+                        <af:facetRef facetName="content"/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </f:facet>
+    </af:panelSplitter>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:backing_bookings-->
+</af:pageTemplateDef>

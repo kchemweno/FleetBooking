@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="index.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelSplitter orientation="horizontal" splitterPosition="100" id="ps1">
+                <f:facet name="first">
+                    <!-- Left -->
+                </f:facet>
+                <f:facet name="second">
+                    <af:decorativeBox theme="dark" id="db3">
+                        <f:facet name="center">
+                            <af:decorativeBox theme="medium" id="db2">
+                                <f:facet name="center">
+                                    <af:panelGridLayout id="pgl1">
+                                        <af:gridRow height="50px" id="gr1">
+                                            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                                                <!-- Partial Header -->
+                                            </af:gridCell>
+                                        </af:gridRow>
+                                        <af:gridRow height="100%" id="gr2">
+                                            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                                                <af:decorativeBox theme="default" id="db1">
+                                                    <f:facet name="center">
+                                                        <!-- Content -->
+                                                    </f:facet>
+                                                </af:decorativeBox>
+                                            </af:gridCell>
+                                        </af:gridRow>
+                                    </af:panelGridLayout>
+                                </f:facet>
+                            </af:decorativeBox>
+                        </f:facet>
+                    </af:decorativeBox>
+                </f:facet>
+            </af:panelSplitter>
+        </af:form>
+    </af:document>
+</f:view>

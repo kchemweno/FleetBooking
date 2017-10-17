@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Refills" id="d1" binding="#{backingBeanScope.backing_refills.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_refills.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_refills.f1}">
+            <af:pageTemplate viewId="/main_template.jsf" id="pt1" binding="#{backingBeanScope.backing_refills.pt1}">
+                <f:facet name="content">
+                    <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_refills.pc1}">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t1" binding="#{backingBeanScope.backing_refills.t1}">
+                                <af:button text="New Refill" id="b1" binding="#{backingBeanScope.backing_refills.b1}"
+                                           icon="#{resource['images:new_booking_small_blue.png']}"
+                                           actionListener="#{bindings.CreateInsert.execute}"
+                                           disabled="#{!bindings.CreateInsert.enabled}"/>
+                                <af:spacer width="10" height="10" id="s1"
+                                           binding="#{backingBeanScope.backing_refills.s1}"/>
+                                <af:button text="O.K" id="b2" binding="#{backingBeanScope.backing_refills.b2}"
+                                           icon="#{resource['images:confirm_booking.png']}"
+                                           actionListener="#{bindings.Commit.execute}"
+                                           disabled="#{!bindings.Commit.enabled}"/>
+                                <af:spacer width="10" height="10" id="s2"
+                                           binding="#{backingBeanScope.backing_refills.s2}"/>
+                                <af:button text="Cancel" id="b3" binding="#{backingBeanScope.backing_refills.b3}"
+                                           icon="#{resource['images:cancel_small.png']}"
+                                           actionListener="#{bindings.Rollback.execute}"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true">
+                                    <af:resetActionListener/>
+                                </af:button>
+                            </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.RefillsView1.collectionModel}" var="row"
+                                  rows="#{bindings.RefillsView1.rangeSize}"
+                                  emptyText="#{bindings.RefillsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.RefillsView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.RefillsView1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.RefillsView1.rangeSize}" id="t2"
+                                  binding="#{backingBeanScope.backing_refills.t2}" partialTriggers="::b1"
+                                  editingMode="clickToEdit">
+                            <af:column sortProperty="#{bindings.RefillsView1.hints.VehicleId.name}" sortable="true"
+                                       headerText="Vehicle" id="c1"
+                                       align="center" inlineStyle="text-align:left;">
+                                <af:selectOneChoice value="#{row.bindings.VehicleId.inputValue}"
+                                                    label="#{row.bindings.VehicleId.label}"
+                                                    required="#{bindings.RefillsView1.hints.VehicleId.mandatory}"
+                                                    shortDesc="#{bindings.RefillsView1.hints.VehicleId.tooltip}"
+                                                    id="soc1">
+                                    <f:selectItems value="#{row.bindings.VehicleId.items}" id="si1"/>
+                                    <f:validator binding="#{row.bindings.VehicleId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.RefillsView1.hints.DriverId.name}" sortable="true"
+                                       headerText="Driver" id="c2"
+                                       align="center" inlineStyle="text-align:left;">
+                                <af:selectOneChoice value="#{row.bindings.DriverId.inputValue}"
+                                                    label="#{row.bindings.DriverId.label}"
+                                                    required="#{bindings.RefillsView1.hints.DriverId.mandatory}"
+                                                    shortDesc="#{bindings.RefillsView1.hints.DriverId.tooltip}"
+                                                    id="soc2">
+                                    <f:selectItems value="#{row.bindings.DriverId.items}" id="si2"/>
+                                    <f:validator binding="#{row.bindings.DriverId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.RefillsView1.hints.DateTime.name}" sortable="true"
+                                       headerText="Time of Refill" id="c3"
+                                       align="center" inlineStyle="text-align:left;">
+                                <af:inputDate value="#{row.bindings.DateTime.inputValue}"
+                                              label="#{bindings.RefillsView1.hints.DateTime.label}"
+                                              required="#{bindings.RefillsView1.hints.DateTime.mandatory}"
+                                              columns="#{bindings.RefillsView1.hints.DateTime.displayWidth}"
+                                              shortDesc="#{bindings.RefillsView1.hints.DateTime.tooltip}" id="id1">
+                                    <f:validator binding="#{row.bindings.DateTime.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.RefillsView1.hints.DateTime.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.RefillsView1.hints.Mileage.name}" sortable="true"
+                                       headerText="#{bindings.RefillsView1.hints.Mileage.label}" id="c4" align="center"
+                                       inlineStyle="text-align:left;">
+                                <af:inputText value="#{row.bindings.Mileage.inputValue}"
+                                              label="#{bindings.RefillsView1.hints.Mileage.label}"
+                                              required="#{bindings.RefillsView1.hints.Mileage.mandatory}"
+                                              columns="#{bindings.RefillsView1.hints.Mileage.displayWidth}"
+                                              maximumLength="#{bindings.RefillsView1.hints.Mileage.precision}"
+                                              shortDesc="#{bindings.RefillsView1.hints.Mileage.tooltip}" id="it1">
+                                    <f:validator binding="#{row.bindings.Mileage.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.RefillsView1.hints.Mileage.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.RefillsView1.hints.Litres.name}" sortable="true"
+                                       headerText="#{bindings.RefillsView1.hints.Litres.label}" id="c5" align="center"
+                                       inlineStyle="text-align:left;">
+                                <af:inputText value="#{row.bindings.Litres.inputValue}"
+                                              label="#{bindings.RefillsView1.hints.Litres.label}"
+                                              required="#{bindings.RefillsView1.hints.Litres.mandatory}"
+                                              columns="#{bindings.RefillsView1.hints.Litres.displayWidth}"
+                                              maximumLength="#{bindings.RefillsView1.hints.Litres.precision}"
+                                              shortDesc="#{bindings.RefillsView1.hints.Litres.tooltip}" id="it2">
+                                    <f:validator binding="#{row.bindings.Litres.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.RefillsView1.hints.Litres.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.RefillsView1.hints.FuelPrice.name}" sortable="true"
+                                       headerText="Price" id="c6"
+                                       align="center" inlineStyle="text-align:left;">
+                                <af:inputText value="#{row.bindings.FuelPrice.inputValue}"
+                                              label="#{bindings.RefillsView1.hints.FuelPrice.label}"
+                                              required="#{bindings.RefillsView1.hints.FuelPrice.mandatory}"
+                                              columns="#{bindings.RefillsView1.hints.FuelPrice.displayWidth}"
+                                              maximumLength="#{bindings.RefillsView1.hints.FuelPrice.precision}"
+                                              shortDesc="#{bindings.RefillsView1.hints.FuelPrice.tooltip}" id="it3">
+                                    <f:validator binding="#{row.bindings.FuelPrice.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.RefillsView1.hints.FuelPrice.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.RefillsView1.hints.Description.name}" sortable="true"
+                                       headerText="#{bindings.RefillsView1.hints.Description.label}" id="c7"
+                                       align="center" inlineStyle="text-align:left;">
+                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                              label="#{bindings.RefillsView1.hints.Description.label}"
+                                              required="#{bindings.RefillsView1.hints.Description.mandatory}"
+                                              columns="#{bindings.RefillsView1.hints.Description.displayWidth}"
+                                              maximumLength="#{bindings.RefillsView1.hints.Description.precision}"
+                                              shortDesc="#{bindings.RefillsView1.hints.Description.tooltip}" id="it4">
+                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                        <f:facet name="statusbar"/>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="branding"/>
+                <f:facet name="navigation"/>
+                <f:attribute name="page_title" value="Refills"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_refills-->
+</f:view>

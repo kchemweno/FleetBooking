@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="fleet.model.AppModuleFleet">
+      <AppModuleConfig name="15C3E427DCF" JDBCName="local_db_connection" DeployPlatform="LOCAL" jbo.project="fleet.model.Model0" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" BC4JConfigName="AppModuleFleetLocal" ApplicationName="fleet.model.AppModuleFleet" DBconnection="java:comp/env/jdbc/local_db_connectionDS">
+         <Database jbo.sql92.JdbcDriverClass="com.mysql.jdbc.Driver" jbo.locking.mode="optimistic" jbo.TypeMapEntries="Java" JDBCDataSource="java:comp/env/jdbc/local_db_connectionDS" jbo.SQLBuilder="SQL92"/>
+         <Security AppModuleJndiName="fleet.model.AppModuleFleet"/>
+         <Tester FullProxyInterfaceName="fleet.model.common.AppModuleFleet"/>
+         <Custom ns0:_testers_credentials_needed="false" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

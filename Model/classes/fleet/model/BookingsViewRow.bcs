@@ -1,0 +1,12 @@
+//Groovy Scripts for fleet.model.BookingsView
+
+package fleet.model
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="TimeZone")
+def TimeZone_ExpressionScript_Expression()
+{
+TimeZone.getDefault().getID()
+}
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="VehicleBookingsPageDef"
+                Package="fleet.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BookingsView1" RangeSize="-1" DataControl="AppModuleFleetDataControl" id="BookingsView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="BookingsView1Iterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="bind_start_time" NDValue="#{bindings.BookingsView1.startDate}" NDType="java.sql.Timestamp"/>
+      <NamedData NDName="bind_end_time" NDValue="#{bindings.BookingsView1.endDate}" NDType="java.sql.Timestamp"/>
+      <NamedData NDName="bind_timezone" NDValue="#{bindings.BookingsView1.timeZoneId}" NDType="java.lang.String"/>
+    </action>
+    <calendar IterBinding="BookingsView1Iterator" id="BookingsView1" xmlns="http://xmlns.oracle.com/adf/faces/binding"
+              ActionBindingName="ExecuteWithParams">
+      <nodeDefinition DefName="fleet.model.BookingsView">
+        <AttrNames>
+          <Item Type="id" Value="Id"/>
+          <Item Type="providerId" Value="IdString"/>
+          <Item Type="title" Value="BookingStaffComments"/>
+          <Item Type="reminder" Value="AllDay"/>
+          <Item Type="location" Value="Destination"/>
+          <Item Type="timeType" Value="AllDay"/>
+          <Item Type="startTime" Value="ExpectedTravelTime"/>
+          <Item Type="endTime" Value="TripEndTime"/>
+          <Item Type="custom" Value="Destination"/>
+          <Item Type="custom" Value="BookingForUserId"/>
+          <Item Type="custom" Value="BookingStaffComments"/>
+          <Item Type="custom" Value="IdString"/>
+          <Item Type="custom" Value="Id"/>
+          <Item Type="custom" Value="Timezone"/>
+          <Item Type="custom" Value="TripEndTime"/>
+          <Item Type="custom" Value="ExpectedTravelTime"/>
+        </AttrNames>
+      </nodeDefinition>
+      <providerDefinition IterBindingName="BookingsView1Iterator">
+        <AttrNames>
+          <Item Type="id" Value="Id"/>
+          <Item Type="displayName" Value="IdString"/>
+        </AttrNames>
+      </providerDefinition>
+    </calendar>
+  </bindings>
+</pageDefinition>

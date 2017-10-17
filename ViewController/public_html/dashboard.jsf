@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="Dashboard" id="d1" binding="#{backingBeanScope.backing_dashboard.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_dashboard.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_dashboard.f1}">
+            <af:pageTemplate viewId="/main_template.jsf" id="pt1" binding="#{backingBeanScope.backing_dashboard.pt1}">
+                <f:facet name="content">
+                    <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.backing_dashboard.psl1}"
+                                           topHeight="0px" endWidth="4px" startWidth="0px" bottomHeight="0px">
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                            <af:masonryLayout id="ml1" binding="#{backingBeanScope.backing_dashboard.ml1}">
+                                <af:panelBox text="Fuel Consumption" styleClass="AFMasonryTileSize2x1" id="pb2"
+                                             binding="#{backingBeanScope.backing_dashboard.pb2}"
+                                             inlineStyle="width:472px; height:300px;" titleHalign="center">
+                                    <dvt:barChart id="barChart1" var="row"
+                                                  value="#{bindings.RefillsView1.collectionModel}"
+                                                  binding="#{backingBeanScope.backing_dashboard.barChart1}">
+                                        <dvt:chartLegend id="cl1" binding="#{backingBeanScope.backing_dashboard.cl1}"/>
+                                        <f:facet name="dataStamp">
+                                            <dvt:chartDataItem id="di1"
+                                                               series="#{bindings.RefillsView1.hints.VehicleId.label}"
+                                                               value="#{row.VehicleId}" group="#{row.Litres}"
+                                                               binding="#{backingBeanScope.backing_dashboard.di1}"/>
+                                        </f:facet>
+                                    </dvt:barChart>
+                                </af:panelBox>
+                                <af:panelBox text="Vehicles Use By Unit" styleClass="AFMasonryTileSize2x1" id="pb1"
+                                             binding="#{backingBeanScope.backing_dashboard.pb1}"
+                                             inlineStyle="width:400px; height:300px;"/>
+                                <af:panelBox text="Vehicle Days In Repair" styleClass="AFMasonryTileSize2x1" id="pb4"
+                                             binding="#{backingBeanScope.backing_dashboard.pb4}"
+                                             inlineStyle="width:400px; height:300px;"/>
+                                <af:panelBox text="Vehicles Mileage" id="pb3"
+                                             binding="#{backingBeanScope.backing_dashboard.pb3}"
+                                             inlineStyle="width:377px; height:352px;">
+                                    <f:facet name="toolbar"/>
+                                </af:panelBox>
+                            </af:masonryLayout>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                </f:facet>
+                <f:facet name="branding"/>
+                <f:facet name="navigation"/>
+                <f:attribute name="page_title" value="Dashboard"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_dashboard-->
+</f:view>

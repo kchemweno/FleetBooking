@@ -1,0 +1,12 @@
+//Groovy Scripts for fleet.model.BookingsView
+
+package fleet.model
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="bind_end_time")
+def bind_end_time_VariableScript_Variable()
+{
+TimeZone.getDefault().getID()
+}
+

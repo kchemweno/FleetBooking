@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Login" id="d1" binding="#{backingBeanScope.backing_login2.d1}">
+        <af:form id="f1" binding="#{backingBeanScope.backing_login2.f1}" defaultCommand="b1">
+            <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.backing_login2.psl1}" topHeight="33%"
+                                   bottomHeight="33%">
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top">
+                    <af:panelGroupLayout id="pgl4" binding="#{backingBeanScope.backing_login2.pgl4}"/>
+                </f:facet>
+                <f:facet name="bottom">
+                    <af:panelGroupLayout id="pgl2" binding="#{backingBeanScope.backing_login2.pgl2}">
+                        <f:facet name="separator"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="center">
+                    <af:panelGroupLayout id="pgl5" binding="#{backingBeanScope.backing_login2.pgl5}" layout="vertical"
+                                         halign="center">
+                        <af:image id="i1"
+                                  binding="#{backingBeanScope.backing_login2.i1}"
+                                  source="#{resource['images:FAO-blue_logo-630x630.png']}"
+                                  inlineStyle="width:70px; height:64px;"/>
+                        <af:outputText value="FLEET BOOKING SYSTEM" id="ot1" binding="#{backingBeanScope.backing_login2.ot1}"
+                                       inlineStyle="color:#3388ff; font-size:medium;"/>
+                        <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_login2.pfl1}"
+                                            inlineStyle="width:358px;">
+                            <af:inputText label="Username" id="it1" binding="#{backingBeanScope.backing_login2.it1}"
+                                          value="#{backing_login.username}"
+                                          inlineStyle="font-size:x-large;color:#3388ff;"
+                                          contentStyle="font-size:medium;color:#3388ff;width:240px;"
+                                          labelStyle="color:#3388ff;" styleClass="color:#3388ff;"/>
+                            <af:inputText label="Password" id="it2" binding="#{backingBeanScope.backing_login2.it2}"
+                                          secret="true" value="#{backing_login.password}"
+                                          inlineStyle="font-size:x-large;"
+                                          contentStyle="font-size:large;color:#3388ff;width:240px;"
+                                          labelStyle="color:#3388ff;"/>
+                            <f:facet name="footer">
+                                <af:panelGridLayout id="pgl3" binding="#{backingBeanScope.backing_login2.pgl3}">
+                                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4"
+                                                binding="#{backingBeanScope.backing_login2.gr4}">
+                                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc10"
+                                                     binding="#{backingBeanScope.backing_login2.gc10}" halign="end">
+                                            <af:button text="O.K" id="b1"
+                                                       binding="#{backingBeanScope.backing_login2.b1}"
+                                                       action="#{backingBeanScope.backing_login2.doLogin}"
+                                                       inlineStyle="font-size:small; width:220px; text-align:center;"
+                                                       selected="true"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                </af:panelGridLayout>
+                            </f:facet>
+                        </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_login2-->
+</f:view>

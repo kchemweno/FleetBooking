@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Vehicles" id="d1" binding="#{backingBeanScope.backing_vehicles.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_vehicles.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_vehicles.f1}">
+            <af:pageTemplate viewId="/main_template.jsf" id="pt1" binding="#{backingBeanScope.backing_vehicles.pt1}">
+                <f:facet name="content">
+                    <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_vehicles.pc1}">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t1" binding="#{backingBeanScope.backing_vehicles.t1}">
+                                <af:button text="New Vehicle" id="b1" binding="#{backingBeanScope.backing_vehicles.b1}"
+                                           icon="#{resource['images:new_booking_small_blue.png']}"
+                                           actionListener="#{bindings.CreateInsert.execute}"
+                                           disabled="#{!bindings.CreateInsert.enabled}"/>
+                                <af:spacer width="10" height="10" id="s1"
+                                           binding="#{backingBeanScope.backing_vehicles.s1}"/>
+                                <af:button text="O.K" id="b2" binding="#{backingBeanScope.backing_vehicles.b2}"
+                                           icon="#{resource['images:confirm_booking.png']}"
+                                           actionListener="#{bindings.Commit.execute}"
+                                           disabled="#{!bindings.Commit.enabled}"/>
+                                <af:spacer width="10" height="10" id="s2"
+                                           binding="#{backingBeanScope.backing_vehicles.s2}"/>
+                                <af:button text="Cancel" id="b3" binding="#{backingBeanScope.backing_vehicles.b3}"
+                                           icon="#{resource['images:cancel_small.png']}"
+                                           actionListener="#{bindings.Rollback.execute}"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true">
+                                    <af:resetActionListener/>
+                                </af:button>
+                            </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.VehiclesView1.collectionModel}" var="row"
+                                  rows="#{bindings.VehiclesView1.rangeSize}"
+                                  emptyText="#{bindings.VehiclesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.VehiclesView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.VehiclesView1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.VehiclesView1.rangeSize}" id="t2"
+                                  binding="#{backingBeanScope.backing_vehicles.t2}" editingMode="clickToEdit"
+                                  partialTriggers="::b1">
+                            <af:column sortProperty="#{bindings.VehiclesView1.hints.Registration.name}" sortable="true"
+                                       headerText="#{bindings.VehiclesView1.hints.Registration.label}" id="c1"
+                                       width="87" inlineStyle="text-align:left;" align="center">
+                                <af:inputText value="#{row.bindings.Registration.inputValue}"
+                                              label="#{bindings.VehiclesView1.hints.Registration.label}"
+                                              required="#{bindings.VehiclesView1.hints.Registration.mandatory}"
+                                              columns="#{bindings.VehiclesView1.hints.Registration.displayWidth}"
+                                              maximumLength="#{bindings.VehiclesView1.hints.Registration.precision}"
+                                              shortDesc="#{bindings.VehiclesView1.hints.Registration.tooltip}" id="it1">
+                                    <f:validator binding="#{row.bindings.Registration.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.VehiclesView1.hints.CardNumber.name}" sortable="true"
+                                       headerText="Card Number" id="c2" width="89" inlineStyle="text-align:left;"
+                                       align="center">
+                                <af:inputText value="#{row.bindings.CardNumber.inputValue}"
+                                              label="#{bindings.VehiclesView1.hints.CardNumber.label}"
+                                              required="#{bindings.VehiclesView1.hints.CardNumber.mandatory}"
+                                              columns="#{bindings.VehiclesView1.hints.CardNumber.displayWidth}"
+                                              maximumLength="#{bindings.VehiclesView1.hints.CardNumber.precision}"
+                                              shortDesc="#{bindings.VehiclesView1.hints.CardNumber.tooltip}" id="it2">
+                                    <f:validator binding="#{row.bindings.CardNumber.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.VehiclesView1.hints.MakeAndModel.name}" sortable="true"
+                                       headerText="Make and Model" id="c3" width="215" inlineStyle="text-align:left;"
+                                       align="center">
+                                <af:inputText value="#{row.bindings.MakeAndModel.inputValue}"
+                                              label="#{bindings.VehiclesView1.hints.MakeAndModel.label}"
+                                              required="#{bindings.VehiclesView1.hints.MakeAndModel.mandatory}"
+                                              columns="#{bindings.VehiclesView1.hints.MakeAndModel.displayWidth}"
+                                              maximumLength="#{bindings.VehiclesView1.hints.MakeAndModel.precision}"
+                                              shortDesc="#{bindings.VehiclesView1.hints.MakeAndModel.tooltip}" id="it3">
+                                    <f:validator binding="#{row.bindings.MakeAndModel.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.VehiclesView1.hints.Passengers.name}" sortable="true"
+                                       headerText="#{bindings.VehiclesView1.hints.Passengers.label}" id="c4" width="68"
+                                       inlineStyle="text-align:left;" align="center">
+                                <af:inputText value="#{row.bindings.Passengers.inputValue}"
+                                              label="#{bindings.VehiclesView1.hints.Passengers.label}"
+                                              required="#{bindings.VehiclesView1.hints.Passengers.mandatory}"
+                                              columns="#{bindings.VehiclesView1.hints.Passengers.displayWidth}"
+                                              maximumLength="#{bindings.VehiclesView1.hints.Passengers.precision}"
+                                              shortDesc="#{bindings.VehiclesView1.hints.Passengers.tooltip}" id="it4">
+                                    <f:validator binding="#{row.bindings.Passengers.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.VehiclesView1.hints.Passengers.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.VehiclesView1.hints.VehicleType.name}" sortable="true"
+                                       headerText="Vehicle Type" id="c5" width="101" inlineStyle="text-align:left;"
+                                       align="center">
+                                <af:inputText value="#{row.bindings.VehicleType.inputValue}"
+                                              label="#{bindings.VehiclesView1.hints.VehicleType.label}"
+                                              required="#{bindings.VehiclesView1.hints.VehicleType.mandatory}"
+                                              columns="#{bindings.VehiclesView1.hints.VehicleType.displayWidth}"
+                                              maximumLength="#{bindings.VehiclesView1.hints.VehicleType.precision}"
+                                              shortDesc="#{bindings.VehiclesView1.hints.VehicleType.tooltip}" id="it5">
+                                    <f:validator binding="#{row.bindings.VehicleType.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.VehiclesView1.hints.EngineCapacity.name}"
+                                       sortable="true" headerText="Engine Capacity" id="c6" width="138"
+                                       inlineStyle="text-align:left;" align="center">
+                                <af:inputText value="#{row.bindings.EngineCapacity.inputValue}"
+                                              label="#{bindings.VehiclesView1.hints.EngineCapacity.label}"
+                                              required="#{bindings.VehiclesView1.hints.EngineCapacity.mandatory}"
+                                              columns="#{bindings.VehiclesView1.hints.EngineCapacity.displayWidth}"
+                                              maximumLength="#{bindings.VehiclesView1.hints.EngineCapacity.precision}"
+                                              shortDesc="#{bindings.VehiclesView1.hints.EngineCapacity.tooltip}"
+                                              id="it6">
+                                    <f:validator binding="#{row.bindings.EngineCapacity.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.VehiclesView1.hints.EngineCapacity.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.VehiclesView1.hints.FuelType.name}" sortable="true"
+                                       headerText="Fuel Type" id="c7" width="145" inlineStyle="text-align:left;"
+                                       align="center">
+                                <af:inputText value="#{row.bindings.FuelType.inputValue}"
+                                              label="#{bindings.VehiclesView1.hints.FuelType.label}"
+                                              required="#{bindings.VehiclesView1.hints.FuelType.mandatory}"
+                                              columns="#{bindings.VehiclesView1.hints.FuelType.displayWidth}"
+                                              maximumLength="#{bindings.VehiclesView1.hints.FuelType.precision}"
+                                              shortDesc="#{bindings.VehiclesView1.hints.FuelType.tooltip}" id="it7">
+                                    <f:validator binding="#{row.bindings.FuelType.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.VehiclesView1.hints.VehicleStatusId.name}"
+                                       sortable="true" headerText="Vehicle Availability" id="c9">
+                                <af:selectOneChoice value="#{row.bindings.VehicleStatusId.inputValue}"
+                                                    label="#{row.bindings.VehicleStatusId.label}"
+                                                    required="#{bindings.VehiclesView1.hints.VehicleStatusId.mandatory}"
+                                                    shortDesc="#{bindings.VehiclesView1.hints.VehicleStatusId.tooltip}"
+                                                    id="soc1">
+                                    <f:selectItems value="#{row.bindings.VehicleStatusId.items}" id="si1"/>
+                                    <f:validator binding="#{row.bindings.VehicleStatusId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.VehiclesView1.hints.Description.name}" sortable="true"
+                                       headerText="Comments" id="c8" width="178" inlineStyle="text-align:left;"
+                                       align="center">
+                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                              label="#{bindings.VehiclesView1.hints.Description.label}"
+                                              required="#{bindings.VehiclesView1.hints.Description.mandatory}"
+                                              columns="#{bindings.VehiclesView1.hints.Description.displayWidth}"
+                                              maximumLength="#{bindings.VehiclesView1.hints.Description.precision}"
+                                              shortDesc="#{bindings.VehiclesView1.hints.Description.tooltip}" id="it8">
+                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                        <f:facet name="statusbar"/>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="branding"/>
+                <f:facet name="navigation"/>
+                <f:attribute name="page_title" value="Vehicles"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_vehicles-->
+</f:view>

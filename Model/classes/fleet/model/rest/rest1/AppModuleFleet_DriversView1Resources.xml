@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="AppModuleFleet_DriversView1Resources" Package="fleet.model.rest.rest1" usageMode="RESTClient">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DriversView1_1" RangeSize="5" DataControl="AppModuleFleetDataControl"
+              id="DriversView1_1Iter"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="DriversView1_1Iter" id="DriversView1" AccessorFolder="Always">
+      <nodeDefinition DefName="fleet.model.DriversView1" Name="fleet.model.DriversView1"/>
+    </tree>
+  </bindings>
+</pageDefinition>

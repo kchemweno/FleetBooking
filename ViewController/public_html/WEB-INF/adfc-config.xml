@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <managed-bean id="__2">
+    <managed-bean-name>backing_users</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Users</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1users.jsf-->
+  </managed-bean>
+  <managed-bean id="__1">
+    <managed-bean-name>backing_bookings</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Bookings</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1bookings.jsf-->
+  </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name>backing_roles</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Roles</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1roles.jsf-->
+  </managed-bean>
+  <managed-bean id="__4">
+    <managed-bean-name>backing_drivers</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Drivers</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1drivers.jsf-->
+  </managed-bean>
+  <managed-bean id="__5">
+    <managed-bean-name>backing_vehicles</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Vehicles</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1vehicles.jsf-->
+  </managed-bean>
+  <managed-bean id="__6">
+    <managed-bean-name>backing_units</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Units</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1units.jsf-->
+  </managed-bean>
+  <managed-bean id="__7">
+    <managed-bean-name>backing_refills</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Refills</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1refills.jsf-->
+  </managed-bean>
+  <managed-bean id="__8">
+    <managed-bean-name>backing_trips</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Trips</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1trips.jsf-->
+  </managed-bean>
+  <managed-bean id="__9">
+    <managed-bean-name>backing_new_booking_fragment</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.NewBookingFragment</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__10">
+    <managed-bean-name>backing_login</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Login</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1login.jsf-->
+  </managed-bean>
+  <managed-bean id="__11">
+    <managed-bean-name>backing_error</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Error</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1error.jsf-->
+  </managed-bean>
+  <managed-bean id="__12">
+    <managed-bean-name>backing_login2</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Login</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1login.jsf-->
+  </managed-bean>
+  <managed-bean id="__13">
+    <managed-bean-name>backing_dashboard</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Dashboard</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashboard.jsf-->
+  </managed-bean>
+  <managed-bean id="__14">
+    <managed-bean-name>backing_process_bookings</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Process_bookings</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1process_bookings.jsf-->
+  </managed-bean>
+  <managed-bean id="__15">
+    <managed-bean-name>backing_index</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Index</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1index.html-->
+  </managed-bean>
+  <managed-bean id="__16">
+    <managed-bean-name>backing_pending_bookings</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Pending_bookings</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1pending_bookings.jsf-->
+  </managed-bean>
+  <managed-bean id="__17">
+    <managed-bean-name>backing_change_password</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Change_password</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1change_password.jsf-->
+  </managed-bean>
+  <managed-bean id="__18">
+    <managed-bean-name>backing_change_password_details</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Change_password_details</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1change_password_details.jsff-->
+  </managed-bean>
+  <managed-bean id="__19">
+    <managed-bean-name>backing_untitled1</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Untitled1</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1untitled1.jsff-->
+  </managed-bean>
+  <managed-bean id="__20">
+    <managed-bean-name>backing_create_new_booking</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.CreateNewBooking</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1create_new_booking.jsff-->
+  </managed-bean>
+  <managed-bean id="__21">
+    <managed-bean-name>backing_create_new_booking2</managed-bean-name>
+    <managed-bean-class>fleet.view.backing.Create_new_booking</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1create_new_booking.jsff-->
+  </managed-bean>
+</adfc-config>

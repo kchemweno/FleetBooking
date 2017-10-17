@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="new_bookingPageDef"
+                Package="fleet.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BookingsView1" RangeSize="25" DataControl="AppModuleFleetDataControl" id="BookingsView1Iterator"/>
+  </executables>
+  <bindings>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleFleetDataControl"/>
+    <list IterBinding="BookingsView1Iterator" StaticList="false" Uses="LOV_BookingForUserId" id="BookingForUserId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="BookingsView1Iterator" StaticList="false" Uses="LOV_BookingTypeId" id="BookingTypeId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="BookingsView1Iterator" id="ExpectedTravelTime">
+      <AttrNames>
+        <Item Value="ExpectedTravelTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BookingsView1Iterator" id="TripEndTime">
+      <AttrNames>
+        <Item Value="TripEndTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BookingsView1Iterator" id="Destination">
+      <AttrNames>
+        <Item Value="Destination"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="BookingsView1Iterator" StaticList="false" Uses="LOV_ItemsTransportedId" id="ItemsTransportedId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="BookingsView1Iterator" id="BookingStaffComments">
+      <AttrNames>
+        <Item Value="BookingStaffComments"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

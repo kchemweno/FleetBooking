@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Trips" id="d1" binding="#{backingBeanScope.backing_trips.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_trips.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_trips.f1}">
+            <af:pageTemplate viewId="/main_template.jsf" id="pt1" binding="#{backingBeanScope.backing_trips.pt1}">
+                <f:facet name="content">
+                    <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_trips.pc1}">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t1" binding="#{backingBeanScope.backing_trips.t1}">
+                                <af:button actionListener="#{bindings.CreateInsert.execute}" text="New Trip"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b1"
+                                           binding="#{backingBeanScope.backing_trips.b1}"
+                                           icon="#{resource['images:new_booking_small_blue.png']}"/>
+                                <af:spacer width="10" height="10" id="s1"
+                                           binding="#{backingBeanScope.backing_trips.s1}"/>
+                                <af:button actionListener="#{bindings.Commit.execute}" text="O.K"
+                                           disabled="#{!bindings.Commit.enabled}" id="b2"
+                                           binding="#{backingBeanScope.backing_trips.b2}"
+                                           icon="#{resource['images:confirm_booking.png']}"/>
+                                <af:spacer width="10" height="10" id="s2"
+                                           binding="#{backingBeanScope.backing_trips.s2}"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="Cancel"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b3"
+                                           binding="#{backingBeanScope.backing_trips.b3}"
+                                           icon="#{resource['images:cancel_small.png']}">
+                                    <af:resetActionListener/>
+                                </af:button>
+                            </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.TripsView1.collectionModel}" var="row"
+                                  rows="#{bindings.TripsView1.rangeSize}"
+                                  emptyText="#{bindings.TripsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.TripsView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.TripsView1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.TripsView1.rangeSize}" id="t2"
+                                  binding="#{backingBeanScope.backing_trips.t2}" partialTriggers="::b1">
+                            <af:column sortProperty="#{bindings.TripsView1.hints.BookingId.name}" sortable="true"
+                                       headerText="Booking" id="c1" align="center"
+                                       inlineStyle="text-align:left;" width="153">
+                                <af:selectOneChoice value="#{row.bindings.BookingId.inputValue}"
+                                                    label="#{row.bindings.BookingId.label}"
+                                                    required="#{bindings.TripsView1.hints.BookingId.mandatory}"
+                                                    shortDesc="#{bindings.TripsView1.hints.BookingId.tooltip}"
+                                                    id="soc1">
+                                    <f:selectItems value="#{row.bindings.BookingId.items}" id="si1"/>
+                                    <f:validator binding="#{row.bindings.BookingId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.TripsView1.hints.Destination.name}" sortable="true"
+                                       headerText="#{bindings.TripsView1.hints.Destination.label}" id="c2"
+                                       align="center" inlineStyle="text-align:left;" width="158">
+                                <af:inputText value="#{row.bindings.Destination.inputValue}"
+                                              label="#{bindings.TripsView1.hints.Destination.label}"
+                                              required="#{bindings.TripsView1.hints.Destination.mandatory}"
+                                              columns="#{bindings.TripsView1.hints.Destination.displayWidth}"
+                                              maximumLength="#{bindings.TripsView1.hints.Destination.precision}"
+                                              shortDesc="#{bindings.TripsView1.hints.Destination.tooltip}" id="it1">
+                                    <f:validator binding="#{row.bindings.Destination.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.TripsView1.hints.StartTime.name}" sortable="true"
+                                       headerText="Start Time" id="c3" align="center"
+                                       inlineStyle="text-align:left;" width="71">
+                                <af:inputDate value="#{row.bindings.StartTime.inputValue}"
+                                              label="#{bindings.TripsView1.hints.StartTime.label}"
+                                              required="#{bindings.TripsView1.hints.StartTime.mandatory}"
+                                              columns="#{bindings.TripsView1.hints.StartTime.displayWidth}"
+                                              shortDesc="#{bindings.TripsView1.hints.StartTime.tooltip}" id="id1">
+                                    <f:validator binding="#{row.bindings.StartTime.validator}"/>
+                                    <af:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.TripsView1.hints.EndTime.name}" sortable="true"
+                                       headerText="End Time" id="c4" align="center"
+                                       inlineStyle="text-align:left;" width="69">
+                                <af:inputDate value="#{row.bindings.EndTime.inputValue}"
+                                              label="#{bindings.TripsView1.hints.EndTime.label}"
+                                              required="#{bindings.TripsView1.hints.EndTime.mandatory}"
+                                              columns="#{bindings.TripsView1.hints.EndTime.displayWidth}"
+                                              shortDesc="#{bindings.TripsView1.hints.EndTime.tooltip}" id="id2">
+                                    <f:validator binding="#{row.bindings.EndTime.validator}"/>
+                                    <af:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.TripsView1.hints.DriverId.name}" sortable="true"
+                                       headerText="Driver" id="c5" align="center"
+                                       inlineStyle="text-align:left;" width="239">
+                                <af:selectOneChoice value="#{row.bindings.DriverId.inputValue}"
+                                                    label="#{row.bindings.DriverId.label}"
+                                                    required="#{bindings.TripsView1.hints.DriverId.mandatory}"
+                                                    shortDesc="#{bindings.TripsView1.hints.DriverId.tooltip}" id="soc2">
+                                    <f:selectItems value="#{row.bindings.DriverId.items}" id="si2"/>
+                                    <f:validator binding="#{row.bindings.DriverId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.TripsView1.hints.VehicleId.name}" sortable="true"
+                                       headerText="Vehicle" id="c6" align="center"
+                                       inlineStyle="text-align:center;" width="116">
+                                <af:selectOneChoice value="#{row.bindings.VehicleId.inputValue}"
+                                                    label="#{row.bindings.VehicleId.label}"
+                                                    required="#{bindings.TripsView1.hints.VehicleId.mandatory}"
+                                                    shortDesc="#{bindings.TripsView1.hints.VehicleId.tooltip}"
+                                                    id="soc3">
+                                    <f:selectItems value="#{row.bindings.VehicleId.items}" id="si3"/>
+                                    <f:validator binding="#{row.bindings.VehicleId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.TripsView1.hints.StartMileage.name}" sortable="true"
+                                       headerText="Starting Mileage" id="c7"
+                                       align="center" inlineStyle="text-align:left;" width="111">
+                                <af:inputText value="#{row.bindings.StartMileage.inputValue}"
+                                              label="#{bindings.TripsView1.hints.StartMileage.label}"
+                                              required="#{bindings.TripsView1.hints.StartMileage.mandatory}"
+                                              columns="#{bindings.TripsView1.hints.StartMileage.displayWidth}"
+                                              maximumLength="#{bindings.TripsView1.hints.StartMileage.precision}"
+                                              shortDesc="#{bindings.TripsView1.hints.StartMileage.tooltip}" id="it2">
+                                    <f:validator binding="#{row.bindings.StartMileage.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.TripsView1.hints.StartMileage.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.TripsView1.hints.EndMileage.name}" sortable="true"
+                                       headerText="Ending Mileage" id="c8"
+                                       align="center" inlineStyle="text-align:left;" width="115">
+                                <af:inputText value="#{row.bindings.EndMileage.inputValue}"
+                                              label="#{bindings.TripsView1.hints.EndMileage.label}"
+                                              required="#{bindings.TripsView1.hints.EndMileage.mandatory}"
+                                              columns="#{bindings.TripsView1.hints.EndMileage.displayWidth}"
+                                              maximumLength="#{bindings.TripsView1.hints.EndMileage.precision}"
+                                              shortDesc="#{bindings.TripsView1.hints.EndMileage.tooltip}" id="it3">
+                                    <f:validator binding="#{row.bindings.EndMileage.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.TripsView1.hints.EndMileage.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.TripsView1.hints.Description.name}" sortable="true"
+                                       headerText="#{bindings.TripsView1.hints.Description.label}" id="c9"
+                                       align="center" inlineStyle="text-align:left;" width="226">
+                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                              label="#{bindings.TripsView1.hints.Description.label}"
+                                              required="#{bindings.TripsView1.hints.Description.mandatory}"
+                                              columns="#{bindings.TripsView1.hints.Description.displayWidth}"
+                                              maximumLength="#{bindings.TripsView1.hints.Description.precision}"
+                                              shortDesc="#{bindings.TripsView1.hints.Description.tooltip}" id="it4">
+                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                        <f:facet name="statusbar"/>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="branding"/>
+                <f:facet name="navigation"/>
+                <f:attribute name="page_title" value="Trips"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_trips-->
+</f:view>

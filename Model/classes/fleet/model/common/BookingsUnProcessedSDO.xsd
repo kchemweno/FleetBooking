@@ -1,0 +1,23 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sdoJava="commonj.sdo/java" targetNamespace="/fleet/model/common/"
+     xmlns="/fleet/model/common/" elementFormDefault="qualified" sdoJava:package="fleet.model.common">
+    <xsd:annotation>
+        <xsd:documentation>
+            <name>Bookings Un Processed</name>
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:import schemaLocation="classpath:/xml/sdoJava.xsd" namespace="commonj.sdo/java"/>
+    <xsd:include schemaLocation="BookingsViewSDO.xsd"/>
+    <xsd:complexType name="BookingsUnProcessedSDO">
+        <xsd:annotation>
+            <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+                <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+                    <attribute>Id</attribute>
+                </key>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="BookingsViewSDO"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="bookingsUnProcessedSDO" type="BookingsUnProcessedSDO"/>
+</xsd:schema>

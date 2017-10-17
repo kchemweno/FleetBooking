@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="bookingsPageDef"
+                Package="fleet.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BookingsView1" RangeSize="25" DataControl="AppModuleFleetDataControl" id="BookingsView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="BookingsView1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleFleetDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleFleetDataControl"/>
+    <tree IterBinding="BookingsView1Iterator" id="BookingsView1">
+      <nodeDefinition DefName="fleet.model.BookingsView" Name="BookingsView10">
+        <AttrNames>
+          <Item Value="UserId"/>
+          <Item Value="BookingForUserId"/>
+          <Item Value="BookingTypeId"/>
+          <Item Value="ExpectedTravelTime"/>
+          <Item Value="Destination"/>
+          <Item Value="ItemsTransportedId"/>
+          <Item Value="BookingStaffComments"/>
+          <Item Value="BookingStatusId"/>
+          <Item Value="BookingActionTime"/>
+          <Item Value="ApprovingStaffComments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

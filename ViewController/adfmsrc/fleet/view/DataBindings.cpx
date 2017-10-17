@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.12.24" id="DataBindings"
+             SeparateXMLFiles="false" Package="fleet.view" ClientType="Generic">
+  <definitionFactories>
+    <factory className="oracle.adfinternal.view.faces.model.binding.ExtendedFacesBindingDefFactoryImpl"
+             nameSpace="http://xmlns.oracle.com/adf/faces/binding"/>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/bookings_old.jsf" usageId="fleet_view_bookingsPageDef"/>
+    <page path="/bookings.jsf" usageId="fleet_view_bookingsPageDef1"/>
+    <page path="/roles.jsf" usageId="fleet_view_rolesPageDef"/>
+    <page path="/drivers.jsf" usageId="fleet_view_driversPageDef"/>
+    <page path="/vehicles.jsf" usageId="fleet_view_vehiclesPageDef"/>
+    <page path="/users.jsf" usageId="fleet_view_usersPageDef"/>
+    <page path="/units.jsf" usageId="fleet_view_unitsPageDef"/>
+    <page path="/refills.jsf" usageId="fleet_view_refillsPageDef"/>
+    <page path="/trips.jsf" usageId="fleet_view_tripsPageDef"/>
+    <page path="/new_booking.jsff" usageId="fleet_view_new_bookingPageDef"/>
+    <page path="/WEB-INF/new_booking_task-flow-definition.xml#new_booking_task-flow-definition@CreateInsert"
+          usageId="fleet_view_new_booking_task_flow_definition_new_booking_task_flow_definition_methodCall1PageDef"/>
+    <page path="/WEB-INF/task-flow-definition_create_new_booking.xml#task-flow-definition_create_new_booking@CreateInsert"
+          usageId="fleet_view_task_flow_definition_create_new_booking_task_flow_definition_create_new_booking_CreateInsertPageDef"/>
+    <page path="/WEB-INF/task-flow-definition_create_new_booking.xml#task-flow-definition_create_new_booking@Commit"
+          usageId="fleet_view_task_flow_definition_create_new_booking_task_flow_definition_create_new_booking_Commit1PageDef"/>
+    <page path="/process_bookings.jsf" usageId="fleet_view_process_bookingsPageDef"/>
+    <page path="/dashboard.jsf" usageId="fleet_view_dashboardPageDef"/>
+    <page path="/pending_bookings.jsf" usageId="fleet_view_pending_bookingsPageDef"/>
+    <page path="/change_password.jsf" usageId="fleet_view_change_passwordPageDef"/>
+    <page path="/templateDef1.jsf" usageId="fleet_view_templateDef1PageDef"/>
+    <page path="/create_new_booking.jsff" usageId="fleet_view_create_new_bookingPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="fleet_view_bookingsPageDef" path="fleet.view.pageDefs.bookingsPageDef"/>
+    <page id="fleet_view_bookingsPageDef1" path="fleet.view.pageDefs.bookingsPageDef1"/>
+    <page id="fleet_view_rolesPageDef" path="fleet.view.pageDefs.rolesPageDef"/>
+    <page id="fleet_view_driversPageDef" path="fleet.view.pageDefs.driversPageDef"/>
+    <page id="fleet_view_vehiclesPageDef" path="fleet.view.pageDefs.vehiclesPageDef"/>
+    <page id="fleet_view_usersPageDef" path="fleet.view.pageDefs.usersPageDef"/>
+    <page id="fleet_view_unitsPageDef" path="fleet.view.pageDefs.unitsPageDef"/>
+    <page id="fleet_view_refillsPageDef" path="fleet.view.pageDefs.refillsPageDef"/>
+    <page id="fleet_view_tripsPageDef" path="fleet.view.pageDefs.tripsPageDef"/>
+    <page id="fleet_view_new_booking_task_flow_definition_new_booking_task_flow_definition_methodCall1PageDef"
+          path="fleet.view.pageDefs.new_booking_task_flow_definition_new_booking_task_flow_definition_methodCall1PageDef"/>
+    <page id="fleet_view_new_bookingPageDef" path="fleet.view.pageDefs.new_bookingPageDef"/>
+    <page id="fleet_view_task_flow_definition_create_new_booking_task_flow_definition_create_new_booking_CreateInsertPageDef"
+          path="fleet.view.pageDefs.task_flow_definition_create_new_booking_task_flow_definition_create_new_booking_CreateInsertPageDef"/>
+    <page id="fleet_view_task_flow_definition_create_new_booking_task_flow_definition_create_new_booking_Commit1PageDef"
+          path="fleet.view.pageDefs.task_flow_definition_create_new_booking_task_flow_definition_create_new_booking_Commit1PageDef"/>
+    <page id="fleet_view_process_bookingsPageDef" path="fleet.view.pageDefs.process_bookingsPageDef"/>
+    <page id="fleet_view_dashboardPageDef" path="fleet.view.pageDefs.dashboardPageDef"/>
+    <page id="fleet_view_pending_bookingsPageDef" path="fleet.view.pageDefs.pending_bookingsPageDef"/>
+    <page id="fleet_view_change_passwordPageDef" path="fleet.view.pageDefs.change_passwordPageDef"/>
+    <page id="fleet_view_templateDef1PageDef" path="fleet.view.pageDefs.templateDef1PageDef"/>
+    <page id="fleet_view_create_new_bookingPageDef" path="fleet.view.pageDefs.create_new_bookingPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleFleetDataControl" Package="fleet.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleFleetLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

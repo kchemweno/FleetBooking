@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="dashboardPageDef"
+                Package="fleet.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RefillsView1" RangeSize="-1" DataControl="AppModuleFleetDataControl" id="RefillsView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RefillsView1Iterator" id="RefillsView1" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="fleet.model.RefillsView" Name="RefillsView1">
+        <AttrNames>
+          <Item Value="VehicleId"/>
+          <Item Value="Litres"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

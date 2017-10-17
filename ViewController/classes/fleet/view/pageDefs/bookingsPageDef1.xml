@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="bookingsPageDef1"
+                Package="fleet.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BookingsView1" RangeSize="-1" DataControl="AppModuleFleetDataControl" id="BookingsView1Iterator"/>
+    <searchRegion Binds="BookingsView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="BookingsView1Query"/>
+    <taskFlow id="taskflowdefinition_create_new_booking1"
+              taskFlowId="/WEB-INF/task-flow-definition_create_new_booking.xml#task-flow-definition_create_new_booking"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"
+              Refresh="default"/>
+    <taskFlow id="new_booking_taskflowdefinition1"
+              taskFlowId="/WEB-INF/new_booking_task-flow-definition.xml#new_booking_task-flow-definition"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <action IterBinding="BookingsView1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleFleetDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleFleetDataControl"/>
+    <tree IterBinding="BookingsView1Iterator" id="BookingsView1">
+      <nodeDefinition DefName="fleet.model.BookingsView" Name="BookingsView10">
+        <AttrNames>
+          <Item Value="UserId"/>
+          <Item Value="BookingForUserId"/>
+          <Item Value="BookingTypeId"/>
+          <Item Value="ExpectedTravelTime"/>
+          <Item Value="Destination"/>
+          <Item Value="ItemsTransportedId"/>
+          <Item Value="BookingStaffComments"/>
+          <Item Value="BookingActionTime"/>
+          <Item Value="ApprovingStaffComments"/>
+          <Item Value="BookingStatusId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="BookingsView1Iterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="bind_start_time" NDValue="#{bindings.BookingsView11.startDate}" NDType="java.sql.Date"/>
+      <NamedData NDName="bind_end_time" NDValue="#{bindings.BookingsView11.endDate}" NDType="java.sql.Date"/>
+      <NamedData NDName="bind_timezone" NDValue="#{bindings.BookingsView11.timeZoneId}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="BookingsView1Iterator" id="ExecuteWithParams1" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="bind_start_time" NDValue="#{bindings.BookingsView11.startDate}" NDType="java.sql.Timestamp"/>
+      <NamedData NDName="bind_end_time" NDValue="#{bindings.BookingsView11.endDate}" NDType="java.sql.Timestamp"/>
+      <NamedData NDName="bind_timezone" NDValue="#{bindings.BookingsView11.timeZoneId}" NDType="java.lang.String"/>
+    </action>
+    <calendar IterBinding="BookingsView1Iterator" id="BookingsView11" xmlns="http://xmlns.oracle.com/adf/faces/binding"
+              ActionBindingName="ExecuteWithParams1">
+      <nodeDefinition DefName="fleet.model.BookingsView">
+        <AttrNames>
+          <Item Type="id" Value="IdString"/>
+          <Item Type="providerId" Value="ProviderId"/>
+          <Item Type="title" Value="BookingStaffComments"/>
+          <Item Type="recurring" Value="Recurring"/>
+          <Item Type="location" Value="Destination"/>
+          <Item Type="timeType" Value="TimeType"/>
+          <Item Type="startTime" Value="ExpectedTravelTime"/>
+          <Item Type="endTime" Value="TripEndTime"/>
+          <Item Type="custom" Value="AllDay"/>
+          <Item Type="custom" Value="IdString"/>
+          <Item Type="custom" Value="ProviderId"/>
+          <Item Type="custom" Value="Recurring"/>
+          <Item Type="custom" Value="TimeType"/>
+          <Item Type="custom" Value="TripEndTime"/>
+          <Item Type="custom" Value="BookingStaffComments"/>
+          <Item Type="custom" Value="Id"/>
+        </AttrNames>
+      </nodeDefinition>
+      <providerDefinition IterBindingName="BookingsView1Iterator">
+        <AttrNames>
+          <Item Type="id" Value="IdString"/>
+          <Item Type="displayName" Value="Id"/>
+        </AttrNames>
+      </providerDefinition>
+    </calendar>
+    <list IterBinding="BookingsView1Iterator" StaticList="false" Uses="LOV_UserId" id="UserId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="BookingsView1Iterator" StaticList="false" Uses="LOV_BookingForUserId" id="BookingForUserId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="BookingsView1Iterator" StaticList="false" Uses="LOV_BookingTypeId" id="BookingTypeId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="BookingsView1Iterator" id="ExpectedTravelTime">
+      <AttrNames>
+        <Item Value="ExpectedTravelTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BookingsView1Iterator" id="Destination">
+      <AttrNames>
+        <Item Value="Destination"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="BookingsView1Iterator" StaticList="false" Uses="LOV_ItemsTransportedId" id="ItemsTransportedId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="BookingsView1Iterator" id="BookingStaffComments">
+      <AttrNames>
+        <Item Value="BookingStaffComments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BookingsView1Iterator" id="ApprovingStaffComments">
+      <AttrNames>
+        <Item Value="ApprovingStaffComments"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="BookingsView1Iterator" StaticList="false" Uses="LOV_BookingStatusId" id="BookingStatusId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="BookingsView1Iterator" id="TripEndTime">
+      <AttrNames>
+        <Item Value="TripEndTime"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

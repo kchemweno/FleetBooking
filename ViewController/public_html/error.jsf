@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="error.jsf" id="d1" binding="#{backingBeanScope.backing_error.d1}">
+        <af:form id="f1" binding="#{backingBeanScope.backing_error.f1}">
+            <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.backing_error.psl1}">
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_error.pgl1}" halign="center">
+                        <af:outputText value="Error occurred. Please   " id="ot1"
+                                       binding="#{backingBeanScope.backing_error.ot1}"
+                                       inlineStyle="text-align:center;"/>
+                        <af:link text="  try again" id="l1" binding="#{backingBeanScope.backing_error.l1}"
+                                 destination="/faces/login.jsf"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_error-->
+</f:view>

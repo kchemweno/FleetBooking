@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="new_booking_task_flow_definition_new_booking_task_flow_definition_methodCall1PageDef"
+                Package="fleet.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="BookingsView1" RangeSize="25" DataControl="AppModuleFleetDataControl" id="BookingsView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="BookingsView1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

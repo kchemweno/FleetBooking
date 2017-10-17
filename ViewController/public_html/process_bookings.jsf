@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Process Bookings" id="d1" binding="#{backingBeanScope.backing_process_bookings.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_process_bookings.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_process_bookings.f1}">
+            <af:pageTemplate viewId="/main_template.jsf" id="pt1"
+                             binding="#{backingBeanScope.backing_process_bookings.pt1}">
+                <f:facet name="content">
+                    <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_process_bookings.pc1}">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" binding="#{backingBeanScope.backing_process_bookings.t2}">
+                                <af:button text="O.K"
+                                           disabled="#{!bindings.Commit.enabled}" id="b1"
+                                           binding="#{backingBeanScope.backing_process_bookings.b1}"
+                                           icon="#{resource['images:confirm_booking.png']}"
+                                           actionListener="#{bindings.Commit.execute}"/>
+                                <af:spacer width="10" height="10" id="s1"
+                                           binding="#{backingBeanScope.backing_process_bookings.s1}"/>
+                                <af:button text="Cancel"
+                                           disabled="#{!bindings.Rollback.enabled}" id="b2"
+                                           binding="#{backingBeanScope.backing_process_bookings.b2}"
+                                           icon="#{resource['images:cancel_small.png']}" immediate="true"
+                                           action="#{backingBeanScope.backing_process_bookings.rollBack}">
+                                    <af:resetActionListener/>
+                                </af:button>
+                            </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.UnprocessedBookings1.collectionModel}" var="row"
+                                  rows="#{bindings.UnprocessedBookings1.rangeSize}"
+                                  emptyText="#{bindings.UnprocessedBookings1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.UnprocessedBookings1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.UnprocessedBookings1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.UnprocessedBookings1.rangeSize}"
+                                  filterModel="#{bindings.UnprocessedBookings1Query.queryDescriptor}"
+                                  filterVisible="true"
+                                  queryListener="#{bindings.UnprocessedBookings1Query.processQuery}" varStatus="vs"
+                                  id="t1" binding="#{backingBeanScope.backing_process_bookings.t1}"
+                                  editingMode="clickToEdit">
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.BookingForUserId.name}"
+                                       filterable="true" sortable="true" headerText="Booked For" id="c1">
+                                <af:selectOneChoice value="#{row.bindings.BookingForUserId.inputValue}"
+                                                    label="#{row.bindings.BookingForUserId.label}"
+                                                    required="#{bindings.UnprocessedBookings1.hints.BookingForUserId.mandatory}"
+                                                    shortDesc="#{bindings.UnprocessedBookings1.hints.BookingForUserId.tooltip}"
+                                                    id="soc1">
+                                    <f:selectItems value="#{row.bindings.BookingForUserId.items}" id="si1"/>
+                                    <f:validator binding="#{row.bindings.BookingForUserId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.BookingTypeId.name}"
+                                       filterable="true" sortable="true" headerText="Booking Type" id="c2">
+                                <af:selectOneChoice value="#{row.bindings.BookingTypeId.inputValue}"
+                                                    label="#{row.bindings.BookingTypeId.label}"
+                                                    required="#{bindings.UnprocessedBookings1.hints.BookingTypeId.mandatory}"
+                                                    shortDesc="#{bindings.UnprocessedBookings1.hints.BookingTypeId.tooltip}"
+                                                    id="soc2">
+                                    <f:selectItems value="#{row.bindings.BookingTypeId.items}" id="si2"/>
+                                    <f:validator binding="#{row.bindings.BookingTypeId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.BookingTime.name}"
+                                       filterable="true" sortable="true" headerText="Booking Time" id="c3">
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.UnprocessedBookings1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.BookingTime.value}"
+                                                  id="id1" binding="#{backingBeanScope.backing_process_bookings.id1}">
+                                        <af:convertDateTime pattern="#{bindings.UnprocessedBookings1.hints.BookingTime.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                                <af:inputDate value="#{row.bindings.BookingTime.inputValue}"
+                                              label="#{bindings.UnprocessedBookings1.hints.BookingTime.label}"
+                                              required="#{bindings.UnprocessedBookings1.hints.BookingTime.mandatory}"
+                                              columns="#{bindings.UnprocessedBookings1.hints.BookingTime.displayWidth}"
+                                              shortDesc="#{bindings.UnprocessedBookings1.hints.BookingTime.tooltip}"
+                                              id="id2">
+                                    <f:validator binding="#{row.bindings.BookingTime.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.UnprocessedBookings1.hints.BookingTime.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.ExpectedTravelTime.name}"
+                                       filterable="true" sortable="true" headerText="Departure Time" id="c4">
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.UnprocessedBookings1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ExpectedTravelTime.value}"
+                                                  id="id3" binding="#{backingBeanScope.backing_process_bookings.id3}">
+                                        <af:convertDateTime pattern="#{bindings.UnprocessedBookings1.hints.ExpectedTravelTime.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                                <af:inputDate value="#{row.bindings.ExpectedTravelTime.inputValue}"
+                                              label="#{bindings.UnprocessedBookings1.hints.ExpectedTravelTime.label}"
+                                              required="#{bindings.UnprocessedBookings1.hints.ExpectedTravelTime.mandatory}"
+                                              columns="#{bindings.UnprocessedBookings1.hints.ExpectedTravelTime.displayWidth}"
+                                              shortDesc="#{bindings.UnprocessedBookings1.hints.ExpectedTravelTime.tooltip}"
+                                              id="id4">
+                                    <f:validator binding="#{row.bindings.ExpectedTravelTime.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.UnprocessedBookings1.hints.ExpectedTravelTime.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.TripEndTime.name}"
+                                       filterable="true" sortable="true" headerText="Arrival Time" id="c5">
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.UnprocessedBookings1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.TripEndTime.value}"
+                                                  id="id5" binding="#{backingBeanScope.backing_process_bookings.id5}">
+                                        <af:convertDateTime pattern="#{bindings.UnprocessedBookings1.hints.TripEndTime.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                                <af:inputDate value="#{row.bindings.TripEndTime.inputValue}"
+                                              label="#{bindings.UnprocessedBookings1.hints.TripEndTime.label}"
+                                              required="#{bindings.UnprocessedBookings1.hints.TripEndTime.mandatory}"
+                                              columns="#{bindings.UnprocessedBookings1.hints.TripEndTime.displayWidth}"
+                                              shortDesc="#{bindings.UnprocessedBookings1.hints.TripEndTime.tooltip}"
+                                              id="id6">
+                                    <f:validator binding="#{row.bindings.TripEndTime.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.UnprocessedBookings1.hints.TripEndTime.format}"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.Destination.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.UnprocessedBookings1.hints.Destination.label}" id="c6">
+                                <af:inputText value="#{row.bindings.Destination.inputValue}"
+                                              label="#{bindings.UnprocessedBookings1.hints.Destination.label}"
+                                              required="#{bindings.UnprocessedBookings1.hints.Destination.mandatory}"
+                                              columns="#{bindings.UnprocessedBookings1.hints.Destination.displayWidth}"
+                                              maximumLength="#{bindings.UnprocessedBookings1.hints.Destination.precision}"
+                                              shortDesc="#{bindings.UnprocessedBookings1.hints.Destination.tooltip}"
+                                              id="it1">
+                                    <f:validator binding="#{row.bindings.Destination.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.ItemsTransportedId.name}"
+                                       filterable="true" sortable="true" headerText="Transporting" id="c7">
+                                <af:selectOneChoice value="#{row.bindings.ItemsTransportedId.inputValue}"
+                                                    label="#{row.bindings.ItemsTransportedId.label}"
+                                                    required="#{bindings.UnprocessedBookings1.hints.ItemsTransportedId.mandatory}"
+                                                    shortDesc="#{bindings.UnprocessedBookings1.hints.ItemsTransportedId.tooltip}"
+                                                    id="soc3">
+                                    <f:selectItems value="#{row.bindings.ItemsTransportedId.items}" id="si3"/>
+                                    <f:validator binding="#{row.bindings.ItemsTransportedId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.BookingStaffComments.name}"
+                                       filterable="true" sortable="true" headerText="Booker's Comments" id="c8">
+                                <af:inputText value="#{row.bindings.BookingStaffComments.inputValue}"
+                                              label="#{bindings.UnprocessedBookings1.hints.BookingStaffComments.label}"
+                                              required="#{bindings.UnprocessedBookings1.hints.BookingStaffComments.mandatory}"
+                                              columns="#{bindings.UnprocessedBookings1.hints.BookingStaffComments.displayWidth}"
+                                              maximumLength="#{bindings.UnprocessedBookings1.hints.BookingStaffComments.precision}"
+                                              shortDesc="#{bindings.UnprocessedBookings1.hints.BookingStaffComments.tooltip}"
+                                              id="it2">
+                                    <f:validator binding="#{row.bindings.BookingStaffComments.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.AllocatedDriverId.name}"
+                                       filterable="true" sortable="true" headerText="Allocated Driver" id="c9">
+                                <af:selectOneChoice value="#{row.bindings.AllocatedDriverId.inputValue}"
+                                                    label="#{row.bindings.AllocatedDriverId.label}"
+                                                    required="#{bindings.UnprocessedBookings1.hints.AllocatedDriverId.mandatory}"
+                                                    shortDesc="#{bindings.UnprocessedBookings1.hints.AllocatedDriverId.tooltip}"
+                                                    id="soc4">
+                                    <f:selectItems value="#{row.bindings.AllocatedDriverId.items}" id="si4"/>
+                                    <f:validator binding="#{row.bindings.AllocatedDriverId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.AllocatedVehicleId.name}"
+                                       filterable="true" sortable="true" headerText="Allocated Vehicle" id="c10">
+                                <af:selectOneChoice value="#{row.bindings.AllocatedVehicleId.inputValue}"
+                                                    label="#{row.bindings.AllocatedVehicleId.label}"
+                                                    required="#{bindings.UnprocessedBookings1.hints.AllocatedVehicleId.mandatory}"
+                                                    shortDesc="#{bindings.UnprocessedBookings1.hints.AllocatedVehicleId.tooltip}"
+                                                    id="soc5">
+                                    <f:selectItems value="#{row.bindings.AllocatedVehicleId.items}" id="si5"/>
+                                    <f:validator binding="#{row.bindings.AllocatedVehicleId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.ApprovingStaffComments.name}"
+                                       filterable="true" sortable="true" headerText="Approver's Comments" id="c11">
+                                <af:inputText value="#{row.bindings.ApprovingStaffComments.inputValue}"
+                                              label="#{bindings.UnprocessedBookings1.hints.ApprovingStaffComments.label}"
+                                              required="#{bindings.UnprocessedBookings1.hints.ApprovingStaffComments.mandatory}"
+                                              columns="#{bindings.UnprocessedBookings1.hints.ApprovingStaffComments.displayWidth}"
+                                              maximumLength="#{bindings.UnprocessedBookings1.hints.ApprovingStaffComments.precision}"
+                                              shortDesc="#{bindings.UnprocessedBookings1.hints.ApprovingStaffComments.tooltip}"
+                                              id="it3">
+                                    <f:validator binding="#{row.bindings.ApprovingStaffComments.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnprocessedBookings1.hints.BookingStatusId.name}"
+                                       filterable="true" sortable="true" headerText="Status" id="c12">
+                                <af:selectOneChoice value="#{row.bindings.BookingStatusId.inputValue}"
+                                                    label="#{row.bindings.BookingStatusId.label}"
+                                                    required="#{bindings.UnprocessedBookings1.hints.BookingStatusId.mandatory}"
+                                                    shortDesc="#{bindings.UnprocessedBookings1.hints.BookingStatusId.tooltip}"
+                                                    id="soc6">
+                                    <f:selectItems value="#{row.bindings.BookingStatusId.items}" id="si6"/>
+                                    <f:validator binding="#{row.bindings.BookingStatusId.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                        </af:table>
+                        <f:facet name="statusbar"/>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="branding"/>
+                <f:facet name="navigation"/>
+                <f:attribute name="page_title" value="Process Bookings"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_process_bookings-->
+</f:view>

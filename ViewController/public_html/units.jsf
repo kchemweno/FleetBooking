@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Units" id="d1" binding="#{backingBeanScope.backing_units.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_units.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_units.f1}">
+            <af:pageTemplate viewId="/main_template.jsf" id="pt1" binding="#{backingBeanScope.backing_units.pt1}">
+                <f:facet name="content">
+                    <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_units.pc1}">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t1" binding="#{backingBeanScope.backing_units.t1}">
+                                <af:button text="New Unit" id="b1" binding="#{backingBeanScope.backing_units.b1}"
+                                           icon="#{resource['images:new_booking_small_blue.png']}"
+                                           disabled="#{!bindings.CreateInsert1.enabled}"
+                                           actionListener="#{bindings.CreateInsert1.execute}"/>
+                                <af:spacer width="10" height="10" id="s1"
+                                           binding="#{backingBeanScope.backing_units.s1}"/>
+                                <af:button text="O.K" id="b2" binding="#{backingBeanScope.backing_units.b2}"
+                                           icon="#{resource['images:confirm_booking.png']}"
+                                           disabled="#{!bindings.Commit.enabled}"
+                                           actionListener="#{bindings.Commit.execute}"/>
+                                <af:spacer width="10" height="10" id="s2"
+                                           binding="#{backingBeanScope.backing_units.s2}"/>
+                                <af:button text="Cancel" id="b3" binding="#{backingBeanScope.backing_units.b3}"
+                                           icon="#{resource['images:cancel_small.png']}"
+                                           disabled="#{!bindings.Rollback.enabled}"
+                                           actionListener="#{bindings.Rollback.execute}" immediate="true">
+                                    <af:resetActionListener/>
+                                </af:button>
+                            </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.UnitsView1.collectionModel}" var="row"
+                                  rows="#{bindings.UnitsView1.rangeSize}"
+                                  emptyText="#{bindings.UnitsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.UnitsView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.UnitsView1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.UnitsView1.rangeSize}" id="t2"
+                                  binding="#{backingBeanScope.backing_units.t2}" editingMode="clickToEdit"
+                                  partialTriggers="::b1">
+                            <af:column sortProperty="#{bindings.UnitsView1.hints.UnitName.name}" sortable="true"
+                                       headerText="Unit" id="c1" width="187"
+                                       align="center" inlineStyle="text-align:left;">
+                                <af:inputText value="#{row.bindings.UnitName.inputValue}"
+                                              label="#{bindings.UnitsView1.hints.UnitName.label}"
+                                              required="#{bindings.UnitsView1.hints.UnitName.mandatory}"
+                                              columns="#{bindings.UnitsView1.hints.UnitName.displayWidth}"
+                                              maximumLength="#{bindings.UnitsView1.hints.UnitName.precision}"
+                                              shortDesc="#{bindings.UnitsView1.hints.UnitName.tooltip}" id="it1">
+                                    <f:validator binding="#{row.bindings.UnitName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.UnitsView1.hints.Description.name}" sortable="true"
+                                       headerText="Comments" id="c2" width="382"
+                                       align="center" inlineStyle="text-align:left;">
+                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                              label="#{bindings.UnitsView1.hints.Description.label}"
+                                              required="#{bindings.UnitsView1.hints.Description.mandatory}"
+                                              columns="#{bindings.UnitsView1.hints.Description.displayWidth}"
+                                              maximumLength="#{bindings.UnitsView1.hints.Description.precision}"
+                                              shortDesc="#{bindings.UnitsView1.hints.Description.tooltip}" id="it2">
+                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                        <f:facet name="statusbar"/>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="branding"/>
+                <f:facet name="navigation"/>
+                <f:attribute name="page_title" value="Units"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_units-->
+</f:view>

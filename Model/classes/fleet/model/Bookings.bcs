@@ -1,0 +1,21 @@
+//Groovy Scripts for fleet.model.Bookings
+
+package fleet.model
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="ProviderId")
+def ProviderId_ExpressionScript_Expression()
+{
+   def a= UserId+"" 
+   return a
+}
+
+
+@TransientValueExpression(attributeName="IdString")
+def IdString_ExpressionScript_Expression()
+{
+  def b = Id+""
+  return b
+}
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="fleet.model.AppModuleFleet">
+    <AppModuleConfig name="AppModuleFleetLocal" jbo.project="fleet.model.Model0"
+                     ApplicationName="fleet.model.AppModuleFleet" DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="Java" jbo.sql92.JdbcDriverClass="com.mysql.jdbc.Driver"
+                JDBCDataSource="java:comp/env/jdbc/local_db_connectionDS" jbo.SQLBuilder="SQL92"/>
+      <Security AppModuleJndiName="fleet.model.AppModuleFleet"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="AppModuleFleetShared" jbo.project="fleet.model.Model0"
+                     ApplicationName="fleet.model.AppModuleFleet" DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="Java" jbo.sql92.JdbcDriverClass="com.mysql.jdbc.Driver"
+                JDBCDataSource="java:comp/env/jdbc/local_db_connectionDS" jbo.SQLBuilder="SQL92"/>
+      <Security AppModuleJndiName="fleet.model.AppModuleFleet"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>
