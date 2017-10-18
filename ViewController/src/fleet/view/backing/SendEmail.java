@@ -33,10 +33,10 @@ public class SendEmail {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailTo));
             //message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("almondsata@gmail.com"));
             if (emailCc.isEmpty()) {
-              message.setRecipients(Message.RecipientType.CC, InternetAddress.parse(emailCc));
-              message.setRecipients(Message.RecipientType.CC, InternetAddress.parse("martin.mutua@fao.org"));
-              message.setRecipients(Message.RecipientType.CC, InternetAddress.parse("scholastica.akiru@fao.org"));
+              message.setRecipients(Message.RecipientType.CC, InternetAddress.parse(emailCc));              
             }
+            message.setRecipients(Message.RecipientType.CC, InternetAddress.parse("martin.mutua@fao.org"));
+            message.setRecipients(Message.RecipientType.CC, InternetAddress.parse("scholastica.akiru@fao.org"));            
             message.setSubject(emailSubject);
            // emailBody = String.format(emailBody, "\r\n");            
             emailBody = emailBody.replaceAll("#END#", "\r\n");

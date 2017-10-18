@@ -4,7 +4,7 @@
     <Factory className="oracle.jdevimpl.db.adapter.DatabaseProviderFactory1212"/>
     <RefAddresses>
       <StringRefAddr addrType="hostname">
-        <Contents>168.202.171.36</Contents>
+        <Contents>localhost</Contents>
       </StringRefAddr>
       <SecureRefAddr addrType="password"/>
       <StringRefAddr addrType="driver">

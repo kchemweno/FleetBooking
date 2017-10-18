@@ -12,18 +12,18 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
     public static void send(String emailTo, String emailCc, String emailSubject, String emailBody) {
-        final String username = "kiprotich.chemweno@fao.org";
-        final String password = "Universitas91!";
+        final String username = "faofleetbooking@gmail.com";
+        final String password = "universitas21";
         //final String username = "faofleetbooking@gmail.com";
         //final String username = "almondsata@gmail.com";
        // final String password = "universitas21";         
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-       // props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.host", "smtp.office365.com");
-        props.put("mail.smtp.port", "587");
-        //props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        //props.put("mail.smtp.host", "smtp.office365.com");
+        //props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.port", "465");
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
