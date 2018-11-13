@@ -21,7 +21,7 @@
                         <af:image id="i1"
                                   binding="#{backingBeanScope.backing_login2.i1}"
                                   source="#{resource['images:FAO-blue_logo-630x630.png']}"
-                                  inlineStyle="width:70px; height:64px;"/>
+                                  inlineStyle="width:66px; height:64px;"/>
                         <af:outputText value="FLEET BOOKING SYSTEM" id="ot1" binding="#{backingBeanScope.backing_login2.ot1}"
                                        inlineStyle="color:#3388ff; font-size:medium;"/>
                         <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_login2.pfl1}"

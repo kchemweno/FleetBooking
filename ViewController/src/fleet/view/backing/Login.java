@@ -1,43 +1,32 @@
 package fleet.view.backing;
 
 import java.io.IOException;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import oracle.adf.view.rich.component.rich.RichDocument;
 import oracle.adf.view.rich.component.rich.RichForm;
 import oracle.adf.view.rich.component.rich.input.RichInputText;
 import oracle.adf.view.rich.component.rich.layout.RichPanelFormLayout;
 import oracle.adf.view.rich.component.rich.nav.RichButton;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import oracle.adf.view.rich.component.rich.layout.RichGridCell;
 import oracle.adf.view.rich.component.rich.layout.RichGridRow;
 import oracle.adf.view.rich.component.rich.layout.RichPanelGridLayout;
 import oracle.adf.view.rich.component.rich.output.RichOutputText;
 import fleet.model.UsersViewImpl;
-
 import fleet.model.UsersViewRowImpl;
-
-
 import oracle.adf.view.rich.component.rich.layout.RichPanelGroupLayout;
 import oracle.adf.view.rich.component.rich.layout.RichPanelStretchLayout;
-
 import oracle.adf.view.rich.component.rich.output.RichImage;
-
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.ViewCriteria;
 import oracle.jbo.ViewCriteriaRow;
@@ -217,6 +206,7 @@ public class Login {
                 redirect(loginUrl);
             } catch (ServletException fle) {
                 showError("ServletException", "Login failed. Please verify the username and password and try again.", null);
+                fle.printStackTrace();
             }
         }
         return null;

@@ -184,15 +184,6 @@
   <welcome-file-list>
     <welcome-file>/faces/bookings.jsf</welcome-file>
   </welcome-file-list>
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>adfAuthentication</web-resource-name>
-      <url-pattern>/adfAuthentication</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>valid-users</role-name>
-    </auth-constraint>
-  </security-constraint>
   <login-config>
     <auth-method>FORM</auth-method>
     <form-login-config>
@@ -203,4 +194,13 @@
   <security-role>
     <role-name>valid-users</role-name>
   </security-role>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>adfAuthentication</web-resource-name>
+      <url-pattern>/adfAuthentication</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>valid-users</role-name>
+    </auth-constraint>
+  </security-constraint>
 </web-app>

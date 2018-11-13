@@ -41,9 +41,10 @@
             </afc:attribute>            
         </afc:component>
     </af:xmlContent>
-    <af:panelSplitter orientation="horizontal" splitterPosition="176" id="pt_ps1">
+    <af:panelSplitter orientation="horizontal" splitterPosition="0" id="pt_ps1">
         <f:facet name="first">
             <!-- Left -->
+            <!--
             <af:panelAccordion discloseMany="false" id="pt_pa1" discloseNone="true">
                 <af:showDetailItem id="bookings" text="Bookings" icon="/images/bookings.jpg" disclosed="false"
                                    inlineStyle="text-align:center;">
@@ -83,6 +84,7 @@
                     <af:separator id="pt_s6"/>
                 </af:showDetailItem>
             </af:panelAccordion>
+            -->
         </f:facet>
         <f:facet name="second">
             <af:panelGridLayout id="pt_pgl1">
@@ -91,26 +93,63 @@
                         <!-- Partial Header -->
                         <af:panelGridLayout id="pt_pgl2">
                             <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="pt_gr3">
-                                <af:gridCell marginStart="5px" width="5%" id="pt_gc3">
+                                <af:gridCell marginStart="9px" width="4%" id="pt_gc3">
                                     <af:image id="pt_i1"
                                               inlineStyle="height:51px; width:53px;"
                                               source="#{resource['images:FAO-blue_logo-630x630.png']}"/>
                                 </af:gridCell>
-                                <af:gridCell marginStart="25px" width="10%" id="pt_gc6" valign="middle" halign="start"
+                                <af:gridCell width="7%" id="pt_gc6" valign="middle" halign="start"
                                              inlineStyle="font-size:small;">
                                     <af:outputText id="pt_ot2"
                                                    inlineStyle="text-align:center; font-size:x-large; color:Navy;"
                                                    value="Fleet Booking"/>
                                 </af:gridCell>
-                                <af:gridCell marginStart="5px" width="20%" id="pt_gc4" valign="bottom" halign="center">
+                                <af:gridCell marginStart="5px" width="10%" id="pt_gc4" valign="middle" halign="center">
                                     <af:outputText id="pt_ot1"
-                                                   inlineStyle="font-size:medium; text-align:center;"
+                                                   inlineStyle="font-size:medium; text-align:center; color: Red;"
                                                    value="#{attrs.page_title}"/>
                                 </af:gridCell>
-                                <af:gridCell marginStart="5px" width="30%" marginEnd="5px" id="pt_gc5" valign="middle">
+                                <af:gridCell marginStart="5px" width="20%" marginEnd="5px" id="pt_gc7" halign="center" valign="middle">
+                                  <!--  <af:panelGroupLayout id="pt_pgl3"> -->
+                                      <!--  <af:toolbar id="pt_t1">-->
+                                        <af:menuBar id="pt_mb1">
+                                        <af:menu text="Bookings" icon="/images/bookings.jpg" id="pt_m1">
+                                            <af:commandMenuItem  icon="#{resource['images:cars.jpg']}"
+                                                action="/bookings.jsf" text="Vehicle Bookings" id="pt_cmi1"/>                                                
+                                            <af:commandMenuItem action="/pending_bookings.jsf"
+                                                icon="#{resource['images:process_bookings.png']}" text="Process Bookings" id="pt_cmi2"/>
+                                            <af:commandMenuItem  icon="#{resource['images:trips.png']}" action="/trips.jsf" text="Vehicle Trips" id="pt_cmi3"/>
+                                         </af:menu>                                                                              
+                                     <af:spacer width="10" height="10" id="pt_s13"/>
+                                    <af:menu text="Reports" id="pt_m2" icon="#{resource['images:reports.png']}">
+                                            <af:commandMenuItem icon="#{resource['images:dashboard.png']}" text="Dashboard" action="/dashboard.jsf" id="pt_cmi7"/>
+                                            <af:commandMenuItem icon="#{resource['images:report2.png']}" text="Fuel" action="/fuel_report.jsf" id="pt_cmi4"/>
+                                            <af:commandMenuItem text="Distance" id="pt_cmi5" action="/distance_report.jsf" icon="#{resource['images:report3.png']}"/>
+                                            <af:commandMenuItem text="Repair" id="pt_cmi8" action="/repairs_report.jsf" icon="#{resource['images:repair.png']}"/>
+                                            <af:commandMenuItem text="Drivers" id="pt_cmi6" action="/drivers_report.jsf" icon="#{resource['images:report5.png']}"/>
+                                    </af:menu>
+                                        <af:spacer width="10" height="10" id="pt_s14"/>
+                                    <af:menu text="Admin" icon="#{resource['images:admin.png']}" id="pt_m3">
+                                        <af:commandMenuItem text="Vehicles" icon="#{resource['images:vehicles.jpg']}" action="/vehicles.jsf" id="pt_cmi9"/>
+                                        <af:commandMenuItem text="Refills" icon="#{resource['images:refuelling.jpg']}" action="/refills.jsf" id="pt_cmi10"/>
+                                        <af:commandMenuItem text="Drivers" icon="#{resource['images:drivers.png']}" action="/drivers.jsf"  id="pt_cmi11"/>                                       
+                                        <af:commandMenuItem text="Units" icon="#{resource['images:units.jpg']}" action="/units.jsf" id="pt_cmi12"/>
+                                        <af:commandMenuItem text="Roles" icon="#{resource['images:roles.png']}" action="/roles.jsf" id="pt_cmi13"/>
+                                        <af:commandMenuItem text="Users" icon="#{resource['images:users.jpg']}"  action="/users.jsf" id="pt_cmi14"/>
+                                    </af:menu>
+                                        <af:spacer width="10" height="10" id="pt_s10"/>
+                                           <af:menu text="" icon="#{resource['images:change_password.png']}" id="pt_m4">
+                                        <af:commandMenuItem text="#{securityContext.authenticated ? &quot;Log out &quot;  : &quot;Login&quot;}" id="pt_cmi15"/>
+                                        <af:commandMenuItem text="Change Password" action="/change_password.jsf" id="pt_cmi16" icon="#{resource['images:password_change.png']}"/>
+                                      </af:menu>
+                                    </af:menuBar> 
+                                   <!-- </af:panelGroupLayout> -->
+                                   <!--  </af:toolbar>-->
+                                </af:gridCell>
+                                <af:gridCell marginStart="0px" width="auto" marginEnd="15px" id="pt_gc5" valign="middle">
                                     <af:outputText value="Welcome;  #{securityContext.userName}" id="pt_ot3"
                                                    inlineStyle="font-size:small; color:Navy;"/>
-                                    <af:spacer width="10" height="10" id="pt_s10"/>
+                                  <!--  <af:spacer width="10" height="10" id="pt_s10"/>
                                     <af:link text="#{securityContext.authenticated ? &quot;Log out &quot;  : &quot;Login&quot;}" id="pt_l10"
                                              destination='#{securityContext.authenticated ? "/adfAuthentication?logout=true&amp;amp;end_url=/faces/bookings.jsf" :"/adfAuthentication?success_url=/faces/bookings.jsf"}'
                                              inlineStyle="font-size:small; color:Navy;">
@@ -119,6 +158,16 @@
                                     <af:link text="Change Password" id="pt_l12"
                                              icon="#{resource['images:change_password.png']}"
                                              action="/change_password.jsf"/>
+                                   -->          
+                                  <!--  <af:menuBar id="pt_mb2">
+                                      <af:menu text="" icon="#{resource['images:change_password.png']}" id="pt_m4">
+                                        <af:commandMenuItem text="#{securityContext.authenticated ? &quot;Log out &quot;  : &quot;Login&quot;}" id="pt_cmi15"
+                                                            
+                                                            />
+                                        <af:commandMenuItem text="Change Password" 
+                                             action="/change_password.jsf" id="pt_cmi16" icon="#{resource['images:password_change.png']}"/>
+                                      </af:menu>
+                                    </af:menuBar>   -->                                
                                 </af:gridCell>
                             </af:gridRow>
                         </af:panelGridLayout>

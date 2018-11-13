@@ -4,6 +4,11 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
+    <iterator Binds="BookingsView1" RangeSize="5" DataControl="AppModuleFleetDataControl" id="BookingsView1Iter"/>
   </executables>
-  <bindings/>
+  <bindings>
+    <tree IterBinding="BookingsView1Iter" id="BookingsView1" AccessorFolder="Always">
+      <nodeDefinition DefName="fleet.model.BookingsView" Name="fleet.model.BookingsView" DiscrName="_Sys_Accessor"/>
+    </tree>
+  </bindings>
 </pageDefinition>

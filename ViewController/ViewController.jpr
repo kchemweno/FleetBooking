@@ -21,7 +21,7 @@
       <value n="oracle.adfdtinternal.view.rich.binding.migration.JarResourceMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdtinternal.view.rich.migration.ComponentIdNodeMigratorHelper" v="11.1.1.1.0.01"/>
       <value n="oracle.adfdtinternal.view.rich.migration.FacesLibraryVersionMigrator" v="11.1.1.1.0.1"/>
-      <value n="oracle.ide.model.Project" v="12.2.1.2.0"/>
+      <value n="oracle.ide.model.Project" v="12.2.1.2.0;12.2.1.3.0"/>
       <value n="oracle.ide.model.ResourcePathsMigrator" v="11.1.1.1.0"/>
       <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.6"/>
       <value n="oracle.jbo.dt.jclient.migrator.JCProjectMigrator" v="11.1.1.1.0"/>
@@ -58,6 +58,7 @@
       <value n="oracle.modeler.bmmigrate.management.Migration" v="11.1.1.1.0"/>
       <value n="oracle.toplink.workbench.addin.migration.PersistenceProjectMigrator" v="11.1.1.1.0"/>
       <value n="oracle.toplink.workbench.addin.migration.TopLinkProjectMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.webcenter.internal.dt.migration.WebCenterProjectMigrator" v="12.2.1.0.0.150729.2101"/>
    </hash>
    <list n="contentSets">
       <string v="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings/offlineDBContentSet"/>
@@ -186,7 +187,7 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="FleetManager_ViewController_webapp">
+         <hash n="Fleet_WebController">
             <hash n="appletArchives"/>
             <hash n="appletFiles">
                <value n="autoInclude" v="true"/>
@@ -197,7 +198,7 @@
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
-            <value n="enterpriseAppName" v="FleetManager_ViewController_webapp"/>
+            <value n="enterpriseAppName" v="Fleet_WebController"/>
             <hash n="fileGroups">
                <list n="groups">
                   <hash>
@@ -251,18 +252,26 @@
                         </list>
                      </hash>
                      <value n="internalName" v="libraries"/>
+                     <list n="selectedLibraries">
+                        <string v="ADF Web Runtime"/>
+                     </list>
                      <value n="targetWithinJar" v="WEB-INF/lib"/>
                      <value n="type" v="3"/>
+                     <list n="unselectedLibraries">
+                        <string v="Adf-share-wls.jar"/>
+                        <string v="Adf-share-base.jar"/>
+                        <string v="Adfmweb.jar"/>
+                     </list>
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/FleetManager_ViewController_webapp.war"/>
+            <url n="jarURL" path="deploy/Fleet_WebController.war"/>
             <value n="profileClass" v="oracle.jdeveloper.deploy.war.WarProfile"/>
-            <value n="profileName" v="FleetManager_ViewController_webapp"/>
+            <value n="profileName" v="Fleet_WebController"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="FleetManager_ViewController_webapp"/>
+         <string v="Fleet_WebController"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
@@ -413,12 +422,16 @@
             <value n="id" v="BC4J Oracle Domains"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="Adfmweb.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <hash n="internalDefinitions">
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
-                  <url path="../../../../../../Users/Chemweno.FIELD/Desktop/Fleet/adf-share-wls.jar" jar-entry=""/>
+                  <url protocol="jar" path="file:/Users/Chemweno.FIELD/Desktop/Fleet/adf-share-wls.jar!/"/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Adf-share-wls.jar"/>
@@ -427,11 +440,20 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../../../../../../Users/Chemweno.FIELD/Desktop/Fleet/adf-share-base.jar" jar-entry=""/>
+                  <url protocol="jar" path="file:/Users/Chemweno.FIELD/Desktop/Fleet/adf-share-base.jar!/"/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Adf-share-base.jar"/>
                <value n="id" v="Adf-share-base.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url protocol="jar" path="file:/C:/Users/chemweno/Desktop/adfmweb.jar!/"/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Adfmweb.jar"/>
+               <value n="id" v="Adfmweb.jar"/>
                <value n="locked" v="true"/>
             </hash>
          </list>
@@ -567,6 +589,10 @@
          </hash>
          <hash>
             <value n="id" v="BC4J Oracle Domains"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Adfmweb.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

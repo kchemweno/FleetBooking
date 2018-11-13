@@ -4,12 +4,12 @@
                   xmlns="http://xmlns.oracle.com/weblogic/jdbc-data-source">
     <name>JDBC_Data_Source_Fleet</name>
     <jdbc-driver-params>
-        <url>jdbc:mysql://168.202.171.36:3306/fleet_management</url>
+        <url>jdbc:mysql://localhost:3306/fleet_management</url>
         <driver-name>com.mysql.jdbc.Driver</driver-name>
         <properties>
             <property>
                 <name>user</name>
-                <value>fleet</value>
+                <value>root</value>
             </property>
         </properties>
         <use-password-indirection>true</use-password-indirection>

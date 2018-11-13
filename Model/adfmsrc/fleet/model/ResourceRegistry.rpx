@@ -1,3 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.12.24" id="ResourceRegistry"
-             SeparateXMLFiles="false" Package="fleet.model" ClientType="Generic"></Application>
+             SeparateXMLFiles="false" Package="fleet.model" ClientType="Generic">
+  <pageMap>
+    <page path="rest1_BookingsView1" usageId="rest1_AppModuleFleet_BookingsViewResources"/>
+  </pageMap>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleFleetDataControl" Package="fleet.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleFleetLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+  <pageDefinitionUsages>
+    <page id="rest1_AppModuleFleet_BookingsViewResources"
+          path="fleet.model.rest.rest1.AppModuleFleet_BookingsViewResources"/>
+  </pageDefinitionUsages>
+</Application>
